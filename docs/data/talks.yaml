@@ -1,16 +1,17 @@
 yashwanth:
-  topic: Introduction to Rust in Bosch
+  topic: RustTechX Summit Kickoff - Keynote & Introduction
   presenter: Yashwanth M Singh
-  affiliation: Bosch Global Software Technologies
-  time: "03:45 PM - 05.00 PM IST"
+  affiliation: Bosch
+  time: "03:30 PM - 04.00 PM IST"
   room: 230
   image_url: ../images/yashwanth.png
   image: ../../images/yashwanth.png
 
   abstract: |
-    Rust in Bosch
+    Kickstarting this event, we celebrate the vibrant Rust community, spanning open-source innovation and in-house collaboration. Discover our forward-thinking roadmap, dive into key milestones, and explore the transformative impact of our open-source contributions. Together, we’re shaping Rust’s future!
   biography: |
-    Rust Developer & SoC Architect
+    Rust Developer & SoC Architect @ Bosch
+    <br>Yashwanth is an innovator passionate about Chip Design and High-Performance Computing, with deep expertise in low-level programming using C, Rust, and HDL. He thrives on creating groundbreaking solutions and advancing technology.
 
     <a href="https://in.linkedin.com/in/yashwanth-singh-m-a7022b16a" target="_blank">
     <img src="../../images/linkedin.svg" alt="yashwanthsinghm" style="width: 40px; height: 40px; vertical-align: middle;">
@@ -24,14 +25,13 @@ uday:
   topic: Innovation Led Growth
   presenter: Uday Prabhu
   affiliation: Bosch Global Software Technologies
-  time: "03:45 PM - 05.00 PM IST"
+  time: "03:30 PM - 04.00 PM IST"
   room: 230
   image_url: ../images/uday.png
   image: ../../images/uday.png
-  abstract: |
-    Topic
+
   biography: |
-    Vice President | CIO
+    Vice President | CIO @ Bosch Global Software Technologies
 
     <a href="https://in.linkedin.com/in/uday-prabhu-8b365014" target="_blank">
     <img src="../../images/linkedin.svg" alt="yashwanthsinghm" style="width: 40px; height: 40px; vertical-align: middle;">
@@ -41,20 +41,24 @@ balaji:
   topic: Tribes In Bosch
   presenter: Balaji Ramalingam
   affiliation: Bosch Global Software Technologies
-  time: "03:45 PM - 05.00 PM IST"
+  time: "03:30 PM - 04.00 PM IST"
   room: 230
   image_url: ../images/balaji.png
   image: ../../images/balaji.png
-  abstract: |
-    Tribes In Bosch
+
   biography: |
-    Head Center of Excellence
+    Head Center of Excellence @ Bosch Global Software Technologies
+
+    <a href="https://www.linkedin.com/in/balaji-ramalingam-7b056412b/" target="_blank">
+    <img src="../../images/linkedin.svg" alt="yashwanthsinghm" style="width: 40px; height: 40px; vertical-align: middle;">
+    </a>
+    
 
 jochen:
   topic: Rust for Development of Safety-Relevant Software
   presenter: Quante Jochen 
   affiliation: BOSCH Research
-  time: "03:45 PM - 05.00 PM IST"
+  time: "04:00 PM - 04.20 PM IST"
   room: 230
   image_url: ../images/jochen.jpg
   image: ../../images/jochen.jpg
@@ -73,7 +77,7 @@ nihal:
   topic: Cranelift - The All-Rust Codegen Alternative to LLVM (No C/C++)
   presenter: Nihal Pasham
   affiliation: Bosch Global Software Technologies
-  time: "03:45 PM - 05.00 PM IST"
+  time: "04:20 PM - 04.40 PM IST"
   room: 230
   image_url: ../images/nihal.png
   image: ../../images/nihal.png
@@ -91,12 +95,11 @@ nihal:
     <img src="../../images/github.svg" alt="nihalpasham" style="width: 40px; height: 40px; vertical-align: middle;">
     </a>
     
-
 anand:
   topic: Rust for Automotive - Targeting Infineon Tricore Aurix Microcontroller for Classic AUTOSAR
   presenter: Anand Gedam
   affiliation: Bosch Global Software Technologies
-  time: "03:45 PM - 05.00 PM IST"
+  time: "04:40 PM - 05.00 PM IST"
   room: 230
   image_url: ../images/anand.png
   image: ../../images/anand.png
@@ -120,12 +123,49 @@ anand:
     <img src="../../images/github.svg" alt="anandgedam" style="width: 40px; height: 40px; vertical-align: middle;">
     </a>
 
+ganesh: 
+  topic: Building a High-Performance, Resource-Efficient Translation Service with Rust Microservices
+  presenter: Ganeshamurthi Ramasamy 
+  affiliation: Bosch Global Software Technologies
+  time: "05:30 PM - 05.50 PM IST"
+  room: 230
+  image_url: ../images/ganesh.jpg
+  image: ../../images/ganesh.jpg
+  abstract: |
+    This talk presents a high-performance, resource-efficient translation service built with Rust microservices, delivering human-level translation quality across all European languages. By leveraging Rust's performance, safety, and concurrency, we developed a modular system using seven microservices, deployed on Azure Kubernetes Service (AKS). Key technical highlights include the use of the Axum web framework, SQLx for asynchronous database interactions, and Azure Entra for Single Sign-On (SSO) integration. The system is optimized for efficiency, with low-load microservices running on as little as 200 millicores of CPU and 256 MB of memory, achieving significant resource savings compared to other language implementations. We also share insights on building custom shared libraries to streamline development and improve maintainability. This work showcases the potential of Rust for building scalable, secure, and highly efficient microservices in production environments, contributing valuable lessons for the Rust community and cloud-native development.
+  biography: |
+    Ganesh Has over 9 years of experience in full-stack development. 
+    Worked on various technologies like Java, Scala, Rust, Angular, AWS, and Azure.
+
+
+hossein:
+  topic: Rust Application for Beverage Dispenser Control
+  presenter: Hossein Karimi Arjomand 
+  affiliation: PRODYNA SE
+  time: "05:50 PM - 06.10 PM IST"
+  room: 230
+  image_url: ../images/hossein.jpg
+  image: ../../images/hossein.jpg
+  abstract: |
+    This presentation introduces the development of a high-performance Rust application created to interface with and control beverage dispenser systems for a global company serving hotels and cruise ships worldwide. Optimized for an armhf (32-bit) platform, this solution is built for a near-embedded environment, emphasizing efficiency and speed. Leveraging Rust’s robust performance and safety features alongside the Raylib library for interactive graphics, the application is tailored to meet the demanding standards of the hospitality industry.
+    <br>Key topics include: 
+    <br> - Introduction
+    <br> - Project scope, requirements, and objectives 
+    <br> - Core technologies: Rust and Raylib 
+    <br> - Comparative statistics with the previous solution 
+    <br> - Highlights of noteworthy Rust code sections 
+
+  biography: |
+    Fullstack Software Engineer @ <a href="https://www.prodyna.com/" target="_blank">PRODYNA SE</a><br>
+    with a strong passion for low-level programming languages like C++ and Rust. With a versatile background in various aspects of software engineering, I prioritize writing clean, efficient, and maintainable code.
+    Three years ago, I began exploring Rust in my spare time, working on hobby projects with technologies such as WebAssembly (Wasm) and the Yew framework. Now, I’m excited to share our experiences and insights from using Rust in a professional setting
+
 
 sanchayan:
   topic: Multimedia using Rust and GStreamer
   presenter: Sanchayan Maity
   affiliation: asymptotic.io
-  time: "05:15 PM - 07.00 PM IST"
+  time: "06:10 PM - 06.30 PM IST"
   room: 230
   image_url: ../images/sanchayan.jpg
   image: ../../images/sanchayan.jpg
@@ -143,7 +183,7 @@ vivek:
   topic: Implementing Zenoh with Rust
   presenter: Vivek Kumar Pandey
   affiliation: ZettaScale Technology
-  time: "05:15 PM - 07.00 PM IST"
+  time: "06:30 PM - 06.50 PM IST"
   room: 230
   image_url: ../images/vivek.jpg
   image: ../../images/vivek.jpg
@@ -156,26 +196,3 @@ vivek:
     A passionate advocate for Free and Open Source Software (FOSS), I am continuously exploring emerging technologies.
     My technical expertise encompasses Rust, C, C++, Python and various platforms critical to the evolution of connected and autonomous systems.
 
-
-
-hossein:
-  topic: Rust Application for Beverage Dispenser Control
-  presenter: Hossein Karimi Arjomand 
-  affiliation: PRODYNA SE
-  time: "05:15 PM - 07.00 PM IST"
-  room: 230
-  image_url: ../images/hossein.jpg
-  image: ../../images/hossein.jpg
-  abstract: |
-    This presentation introduces the development of a high-performance Rust application created to interface with and control beverage dispenser systems for a global company serving hotels and cruise ships worldwide. Optimized for an armhf (32-bit) platform, this solution is built for a near-embedded environment, emphasizing efficiency and speed. Leveraging Rust’s robust performance and safety features alongside the Raylib library for interactive graphics, the application is tailored to meet the demanding standards of the hospitality industry.
-    <br>Key topics include: 
-    <br> - Introduction
-    <br> - Project scope, requirements, and objectives 
-    <br> - Core technologies: Rust and Raylib 
-    <br> - Comparative statistics with the previous solution 
-    <br> - Highlights of noteworthy Rust code sections 
-
-  biography: |
-    Fullstack Software Engineer @ <a href="https://www.prodyna.com/" target="_blank">PRODYNA SE</a><br>
-    with a strong passion for low-level programming languages like C++ and Rust. With a versatile background in various aspects of software engineering, I prioritize writing clean, efficient, and maintainable code.
-    Three years ago, I began exploring Rust in my spare time, working on hobby projects with technologies such as WebAssembly (Wasm) and the Yew framework. Now, I’m excited to share our experiences and insights from using Rust in a professional setting

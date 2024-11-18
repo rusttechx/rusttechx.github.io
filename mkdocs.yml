@@ -38,10 +38,11 @@ nav:
 #      - SUSE: keynotes/suse.md
     - Talks by Bosch Team:
       - talks/index.md
-      - Rust In Bosch: talks/yashwanth.md
+      - RustTechX Summit Kickoff - Keynote & Introduction: talks/yashwanth.md
       - Rust for Development of Safety-Relevant Software: talks/jochen.md
       - Cranelift - The All-Rust Codegen Alternative to LLVM (No C/C++): talks/nihal.md
       - Rust In Automotive : talks/anand.md
+      - Building a High-Performance, Resource-Efficient Translation Service with Rust: talks/ganesh.md
     - Guest Speakers:
        - talks/index.md
        - Uday Haleangadi Prabhu : talks/uday.md

@@ -6,18 +6,19 @@ hide:
 # Agenda
 
 ### Opening Keynote
-3:30 PM — 3.45 PM
+3:30 PM — 4.00 PM
 
 ### Talks by Bosch Team
-3.45 PM — 5.00 PM
+4.00 PM — 6.00 PM
 
 ### Break
-5.00 PM — 5.15 PM
+5.00 PM — 5.30 PM
 
 ### Talks by External Speakers
-5.15 PM — 7.00 PM
+6.00 PM — 7.00 PM
 
 ### Networking
+7.00 PM onwards
 
 
 
