@@ -131,7 +131,7 @@
 /*  Custom header background */
 
 header.md-header {
-    background-image: url('/summit-2024/images/tab_background_long.jpg');
+    background-image: url('/images/tab_background_long.jpg');
     background-repeat: no-repeat;
     background-position: left top;
     background-size: cover;

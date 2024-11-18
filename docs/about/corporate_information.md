@@ -18,7 +18,7 @@ Managing Director: Mr. Dattatri Salagame
 
 **Your contact at Bosch**
 
-[Contact information](/summit-2024/contact)  
+[Contact information](/contact)  
 +91(80)6657-4691
 
 **CIN Number**

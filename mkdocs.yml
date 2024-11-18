@@ -1,13 +1,13 @@
 site_name: RustTechX Summit 2024
-site_url: https://rusttechx.github.io/summit-2024/
+site_url: https://rusttechx.github.io/
 site_description: RustTechX Annual Summit
 site_author: RustTechX-Team
 copyright: >
   Copyright &copy; 2024 Bosch Global Software Technologies Private Limited , all rights reserved<br/>
-  <a href="/summit-2024/about/code_of_conduct">Code of Conduct</a>&emsp;
-  <a href="/summit-2024/about/corporate_information">Corporate Information</a>&emsp;
-  <a href="/summit-2024/about/legal_notice">Legal Notice</a>&emsp;
-  <a href="/summit-2024/about/data_protection_notice">Data protection notice (privacy policy)</a>&emsp;
+  <a href="/about/code_of_conduct">Code of Conduct</a>&emsp;
+  <a href="/about/corporate_information">Corporate Information</a>&emsp;
+  <a href="/about/legal_notice">Legal Notice</a>&emsp;
+  <a href="/about/data_protection_notice">Data protection notice (privacy policy)</a>&emsp;
   <a href="#__consent">Privacy settings</a>
 
 #repo_url: https://forms.gle/B6kHvxUscfWz4ETr9

@@ -13,7 +13,7 @@ hide:
 #
 <div class="banner">
     <div class="left-column">
-        <img src="../summit-2024/images/RustTechX-Summit2024-logo.png" alt="Conference Logo" class="logo"> 
+        <img src="/images/RustTechX-Summit2024-logo.png" alt="Conference Logo" class="logo"> 
         <div class="tagline">Innovate & Integrate</div>
         <div class="description">
 Join us at the Annual Conference organized by Rust team at Bosch Global Software Technologies, where Rustaceans converge to explore innovative ideas in Rust development, from chip to cloud.
