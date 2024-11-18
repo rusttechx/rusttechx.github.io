@@ -68,7 +68,7 @@
 
 {% macro presentation_tile(metadata, id, section, color='grey-green', image_url=None) -%}
 {% set data = metadata[id] %}
-<a class="presentation-tile tile-{{ color }}" href="/summit-2024/{{ section }}/{{ id }}">
+<a class="presentation-tile tile-{{ color }}" href="/{{ section }}/{{ id }}">
     <div class="tile-content">
         <span>
         {% if data.image_url %}
