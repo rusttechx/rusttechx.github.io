@@ -1,0 +1,40 @@
+{% extends "main.html" %}
+
+{% block header %}
+{{ super() }}
+{% endblock %}
+
+{% block tabs %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<style>
+    nav.md-tabs {
+        display: none;
+    } 
+    div.md-main__inner {
+        margin-top: 0.5em;
+    }
+    header.md-header {
+        background-image: auto;
+    }
+    div.md-container {
+        /* background-image: url('/summit-2024/images/background.png'); */
+        background-color:rgb(224, 217, 217);
+    }
+    div.md-content p, h1, h2, h3, h4 {
+        color: white !important;
+    }
+    #embedded-iot-linux-and-oss-day {
+        margin-bottom: 15px;
+    }
+</style>
+<center>
+{{ super() }}
+</center>
+{% endblock %}
+
+{% block footer %}
+{{ super() }}
+{% endblock %}
