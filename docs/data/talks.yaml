@@ -10,8 +10,8 @@ yashwanth:
   abstract: |
     Kickstarting this event, we celebrate the vibrant Rust community, spanning open-source innovation and in-house collaboration. Discover our forward-thinking roadmap, dive into key milestones, and explore the transformative impact of our open-source contributions. Together, we’re shaping Rust’s future!
   biography: |
-    Rust Developer & SoC Architect @ Bosch
-    <br>Yashwanth is an innovator passionate about Chip Design and High-Performance Computing, with deep expertise in low-level programming using C, Rust, and HDL. He thrives on creating groundbreaking solutions and advancing technology.
+    Rust Developer & SoC Architect @ Bosch<br>
+    Yashwanth is an innovator passionate about Chip Design and High-Performance Computing, with deep expertise in low-level programming using C, Rust, and HDL. He thrives on creating groundbreaking solutions and advancing technology.
 
     <a href="https://in.linkedin.com/in/yashwanth-singh-m-a7022b16a" target="_blank">
     <img src="../../images/linkedin.svg" alt="yashwanthsinghm" style="width: 40px; height: 40px; vertical-align: middle;">
@@ -85,7 +85,8 @@ nihal:
     Cranelift is a lightweight, all-Rust code generation framework designed to overcome the complexities of LLVM. While LLVM has been the go-to choice for decades, its sheer size and steep learning curve make it difficult to navigate, even after 20 years. Cranelift simplifies compiler design and is poised to address the rising importance of compilers in today’s tech landscape. As hardware innovation accelerates, the ability to quickly adapt to new architectures, optimize for power or memory constraints, and improve performance is crucial. Cranelift’s streamlined design enables developers to efficiently tackle these challenges, with a focus on code portability, lower overhead, and faster code generation. 
     This talk will introduce Cranelift’s intermediate representation (IR), covering its use of types, SSA, and control flow graphs (CFGs). Attendees will also see how Cranelift simplifies Rust-to-IR workflows, provides powerful testing and visualization tools, and streamlines code analysis for modern compiler challenges. Whether you’re interested in compilers, Rust, or optimizing code for next-gen hardware, Cranelift offers a fresh, practical solution. 
   biography: |
-    Nihal is a Principal Technology Expert at Bosch, specializing in automotive, industrial, and enterprise systems engineering. In recent years, he has focused on developing high-assurance, high-performance software to enhance the safety and efficiency of software-defined vehicles (SDVs) and embedded heterogeneous systems. Through his emphasis on reusable code and rigorous security engineering, his team has established itself as a leader in product security.
+    Nihal is a Sr. Technology Expert at BGSW<br>
+    Specializing in automotive, industrial, and enterprise systems engineering. In recent years, he has focused on developing high-assurance, high-performance software to enhance the safety and efficiency of software-defined vehicles (SDVs) and embedded heterogeneous systems. Through his emphasis on reusable code and rigorous security engineering, his team has established itself as a leader in product security.
     With a career spanning strategic technology roles, Nihal has continuously pushed the boundaries of embedded and heterogeneous computing. At Bosch, he is not only addressing the challenges of today but also shaping the technological landscape of tomorrow, building robust and secure platforms for a connected world.
 
     <a href="https://in.linkedin.com/in/nihalpasham" target="_blank">
@@ -110,7 +111,7 @@ anand:
     including integration with existing AUTOSAR architecture and addressing interoperability challenges with C-based components.
     The session will share insights, lessons learned, and the potential benefits observed during this journey, offering a grounded perspective on adopting Rust in automotive software development.
   biography: |
-    Lead Engineer @ BGSW
+    Lead Engineer @ BGSW<br>
     Anand is an experienced embedded cybersecurity engineer with over 7 years of expertise in developing secure software solutions across verticals such as automotive, industrial IoT, and locomotives. 
     Currently, Anand is focused on creating Rust-based solutions for Bosch internal products, with a specialization in integrating Rust into safety-critical applications.  
     Anand has also contributed to TrustZone-M enablement for rustBoot, a secure bootloader written in Rust for embedded systems.
@@ -134,6 +135,7 @@ ganesh:
   abstract: |
     This talk presents a high-performance, resource-efficient translation service built with Rust microservices, delivering human-level translation quality across all European languages. By leveraging Rust's performance, safety, and concurrency, we developed a modular system using seven microservices, deployed on Azure Kubernetes Service (AKS). Key technical highlights include the use of the Axum web framework, SQLx for asynchronous database interactions, and Azure Entra for Single Sign-On (SSO) integration. The system is optimized for efficiency, with low-load microservices running on as little as 200 millicores of CPU and 256 MB of memory, achieving significant resource savings compared to other language implementations. We also share insights on building custom shared libraries to streamline development and improve maintainability. This work showcases the potential of Rust for building scalable, secure, and highly efficient microservices in production environments, contributing valuable lessons for the Rust community and cloud-native development.
   biography: |
+    Development Lead @ BGSW<br>
     Ganesh Has over 9 years of experience in full-stack development. 
     Worked on various technologies like Java, Scala, Rust, Angular, AWS, and Azure.
 
@@ -179,20 +181,20 @@ sanchayan:
     I have organized the Rust and Haskell Bangalore meetups since 2018. 
     In my spare time, I mostly read, code and dabble in Haskell, Rust and more recently Zig.
 
-vivek:
-  topic: Implementing Zenoh with Rust
-  presenter: Vivek Kumar Pandey
-  affiliation: ZettaScale Technology
-  time: "06:30 PM - 06.50 PM IST"
-  room: 230
-  image_url: ../images/vivek.jpg
-  image: ../../images/vivek.jpg
-  abstract: |
-    Building efficient and scalable distributed systems : Implementing Zenoh with Rust for V2V, Autonomous systems and Robotics
-  biography: |
-    Senior Solutions Architect @ <a href="https://www.zettascale.tech/" target="_blank">ZettaScale Technology</a><br>
-    With over 12 years of experience, I specialize in Software-Defined Vehicles (SDV), Robot Operating System (ROS), real-time communication protocols, and distributed systems.
-    My background spans multiple high-impact sectors, including automotive, robotics, defense & aerospace, and Industry 4.0.
-    A passionate advocate for Free and Open Source Software (FOSS), I am continuously exploring emerging technologies.
-    My technical expertise encompasses Rust, C, C++, Python and various platforms critical to the evolution of connected and autonomous systems.
+# vivek:
+#  topic: Implementing Zenoh with Rust
+#  presenter: Vivek Kumar Pandey
+#  affiliation: ZettaScale Technology
+#  time: "06:30 PM - 06.50 PM IST"
+#  room: 230
+#  image_url: ../images/vivek.jpg
+#  image: ../../images/vivek.jpg
+#  abstract: |
+#    Building efficient and scalable distributed systems : Implementing Zenoh with Rust for V2V, Autonomous systems and Robotics
+#  biography: |
+#    Senior Solutions Architect @ <a href="https://www.zettascale.tech/" target="_blank">ZettaScale Technology</a><br>
+#    With over 12 years of experience, I specialize in Software-Defined Vehicles (SDV), Robot Operating System (ROS), real-time communication protocols, and distributed systems.
+#    My background spans multiple high-impact sectors, including automotive, robotics, defense & aerospace, and Industry 4.0.
+#    A passionate advocate for Free and Open Source Software (FOSS), I am continuously exploring emerging technologies.
+#    My technical expertise encompasses Rust, C, C++, Python and various platforms critical to the evolution of connected and autonomous systems.
 

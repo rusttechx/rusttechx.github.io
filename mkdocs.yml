@@ -50,7 +50,7 @@ nav:
     - Talks by External Speakers:
       - talks/index.md
       - Multimedia using Rust and GStreamer : talks/sanchayan.md
-      - Implementing Zenoh with Rust: talks/vivek.md
+      #- Implementing Zenoh with Rust: talks/vivek.md
       - Rust Application for Beverage Dispenser Control: talks/hossein.md
 #      - Bosch TOP97 (1): talks/bosch_top97_1.md
 #      - Bosch TOP97 (2): talks/bosch_top97_2.md

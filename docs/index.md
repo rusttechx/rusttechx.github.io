@@ -39,7 +39,7 @@ Join us at the Annual Conference organized by Rust team at Bosch Global Software
   {{ tiles.link_tile('Venue', 'Conference Venue Information', 'venue', 'images/directions.svg', color='dark-green') }}
   {{ tiles.link_tile('About', 'Information about the Conference', 'about/faq', 'images/faq.svg', color='light-green') }}
   {{ tiles.link_tile('Contact', 'Contacts for support and questions', 'contact', 'images/contact.svg', color='dark-purple') }}
-  {{ tiles.link_tile('Register', 'Registration Form', 'register', 'images/register.svg', color='green') }}
+  <!-- {{ tiles.link_tile('Register', 'Registration Form', 'register', 'images/register.svg', color='green') }} -->
 {% endcall %}
 
 <!-- 
