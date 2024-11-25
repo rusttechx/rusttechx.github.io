@@ -93,7 +93,7 @@ nav:
 #    - Legal Notice: about/legal_notice.md
 #    - Data Protection Notice: about/data_protection_notice.md
   - Contact: contact.md
-  - Registration: register.md
+#  - Registration: register.md
 
 theme:
   name: material
