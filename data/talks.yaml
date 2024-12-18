@@ -1,0 +1,201 @@
+yashwanth:
+  topic: RustTechX Summit Kickoff - Keynote & Introduction
+  presenter: Yashwanth M Singh
+  affiliation: Bosch
+  time: "03:30 PM - 04.00 PM IST"
+  room: 230
+  image_url: ../images/yashwanth.png
+  image: ../../images/yashwanth.png
+
+  abstract: |
+    Kickstarting this event, we celebrate the vibrant Rust community, spanning open-source innovation and in-house collaboration. Discover our forward-thinking roadmap, dive into key milestones, and explore the transformative impact of our open-source contributions. Together, we’re shaping Rust’s future!
+  biography: |
+    Rust Developer & SoC Architect @ Bosch<br>
+    Yashwanth is an innovator passionate about Chip Design and High-Performance Computing, with deep expertise in low-level programming using C, Rust, and HDL. He thrives on creating groundbreaking solutions and advancing technology.
+
+    <a href="https://in.linkedin.com/in/yashwanth-singh-m-a7022b16a" target="_blank">
+    <img src="../../images/linkedin.svg" alt="yashwanthsinghm" style="width: 40px; height: 40px; vertical-align: middle;">
+    </a>
+    <a href="https://github.com/yashwanthsinghm" target="_blank">
+    <img src="../../images/github.svg" alt="yashwanthsinghm" style="width: 40px; height: 40px; vertical-align: middle;">
+    </a>
+    
+
+uday:
+  topic: Innovation Led Growth
+  presenter: Uday Prabhu
+  affiliation: Bosch Global Software Technologies
+  time: "03:30 PM - 04.00 PM IST"
+  room: 230
+  image_url: ../images/uday.png
+  image: ../../images/uday.png
+
+  biography: |
+    Vice President | CIO @ Bosch Global Software Technologies
+
+    <a href="https://in.linkedin.com/in/uday-prabhu-8b365014" target="_blank">
+    <img src="../../images/linkedin.svg" alt="yashwanthsinghm" style="width: 40px; height: 40px; vertical-align: middle;">
+    </a>
+
+balaji:
+  topic: Tribes In Bosch
+  presenter: Balaji Ramalingam
+  affiliation: Bosch Global Software Technologies
+  time: "03:30 PM - 04.00 PM IST"
+  room: 230
+  image_url: ../images/balaji.png
+  image: ../../images/balaji.png
+
+  biography: |
+    Head Center of Excellence @ Bosch Global Software Technologies
+
+    <a href="https://www.linkedin.com/in/balaji-ramalingam-7b056412b/" target="_blank">
+    <img src="../../images/linkedin.svg" alt="yashwanthsinghm" style="width: 40px; height: 40px; vertical-align: middle;">
+    </a>
+    
+
+jochen:
+  topic: Rust for Development of Safety-Relevant Software
+  presenter: Quante Jochen 
+  affiliation: BOSCH Research
+  time: "04:00 PM - 04.20 PM IST"
+  room: 230
+  image_url: ../images/jochen.jpg
+  image: ../../images/jochen.jpg
+  abstract: |
+    We address the following questions:
+    <br> - What is the state of the art of embedded software development with Rust?
+    <br> - Is it already applicable to industrial applications?
+    <br> - Does Rust make development of embedded safety-relevant software more efficient and safe?
+    <br> - How can Rust code be integrated into existing C/C++ systems?
+    <br> - What are the chances and risks of using Rust for development of safety-relevant software?
+
+  biography: |
+    Senior Expert for Software Analysis and Design @ BOSCH Research
+
+nihal:
+  topic: Cranelift - The All-Rust Codegen Alternative to LLVM (No C/C++)
+  presenter: Nihal Pasham
+  affiliation: Bosch Global Software Technologies
+  time: "04:20 PM - 04.40 PM IST"
+  room: 230
+  image_url: ../images/nihal.png
+  image: ../../images/nihal.png
+  abstract: |
+    Cranelift is a lightweight, all-Rust code generation framework designed to overcome the complexities of LLVM. While LLVM has been the go-to choice for decades, its sheer size and steep learning curve make it difficult to navigate, even after 20 years. Cranelift simplifies compiler design and is poised to address the rising importance of compilers in today’s tech landscape. As hardware innovation accelerates, the ability to quickly adapt to new architectures, optimize for power or memory constraints, and improve performance is crucial. Cranelift’s streamlined design enables developers to efficiently tackle these challenges, with a focus on code portability, lower overhead, and faster code generation. 
+    This talk will introduce Cranelift’s intermediate representation (IR), covering its use of types, SSA, and control flow graphs (CFGs). Attendees will also see how Cranelift simplifies Rust-to-IR workflows, provides powerful testing and visualization tools, and streamlines code analysis for modern compiler challenges. Whether you’re interested in compilers, Rust, or optimizing code for next-gen hardware, Cranelift offers a fresh, practical solution. 
+  biography: |
+    Nihal is a Sr. Technology Expert at BGSW<br>
+    Specializing in automotive, industrial, and enterprise systems engineering. In recent years, he has focused on developing high-assurance, high-performance software to enhance the safety and efficiency of software-defined vehicles (SDVs) and embedded heterogeneous systems. Through his emphasis on reusable code and rigorous security engineering, his team has established itself as a leader in product security.
+    With a career spanning strategic technology roles, Nihal has continuously pushed the boundaries of embedded and heterogeneous computing. At Bosch, he is not only addressing the challenges of today but also shaping the technological landscape of tomorrow, building robust and secure platforms for a connected world.
+
+    <a href="https://in.linkedin.com/in/nihalpasham" target="_blank">
+    <img src="../../images/linkedin.svg" alt="nihalpasham" style="width: 40px; height: 40px; vertical-align: middle;">
+    </a>
+    <a href="https://github.com/nihalpasham" target="_blank">
+    <img src="../../images/github.svg" alt="nihalpasham" style="width: 40px; height: 40px; vertical-align: middle;">
+    </a>
+    
+anand:
+  topic: Rust for Automotive - Targeting Infineon Tricore Aurix Microcontroller for Classic AUTOSAR
+  presenter: Anand Gedam
+  affiliation: Bosch Global Software Technologies
+  time: "04:40 PM - 05.00 PM IST"
+  room: 230
+  image_url: ../images/anand.png
+  image: ../../images/anand.png
+  abstract: |
+    This talk delves into the practicalities of using Rust for safety-critical automotive software, 
+    focusing on the Infineon Tricore Aurix microcontroller within a Classic AUTOSAR framework. 
+    It will highlight the steps taken to evaluate Rust's feasibility for such applications, 
+    including integration with existing AUTOSAR architecture and addressing interoperability challenges with C-based components.
+    The session will share insights, lessons learned, and the potential benefits observed during this journey, offering a grounded perspective on adopting Rust in automotive software development.
+  biography: |
+    Lead Engineer @ BGSW<br>
+    Anand is an experienced embedded cybersecurity engineer with over 7 years of expertise in developing secure software solutions across verticals such as automotive, industrial IoT, and locomotives. 
+    Currently, Anand is focused on creating Rust-based solutions for Bosch internal products, with a specialization in integrating Rust into safety-critical applications.  
+    Anand has also contributed to TrustZone-M enablement for rustBoot, a secure bootloader written in Rust for embedded systems.
+    This work highlights their expertise in building secure, low-level firmware while leveraging Rust’s safety and performance features.  
+
+    <a href="https://in.linkedin.com/in/anand-gedam210919210919" target="_blank">
+    <img src="../../images/linkedin.svg" alt="anandgedam" style="width: 40px; height: 40px; vertical-align: middle;">
+    </a>
+    <a href="https://github.com/Strange21" target="_blank">
+    <img src="../../images/github.svg" alt="anandgedam" style="width: 40px; height: 40px; vertical-align: middle;">
+    </a>
+
+ganesh: 
+  topic: Building a High-Performance, Resource-Efficient Translation Service with Rust Microservices
+  presenter: Ganeshamurthi Ramasamy 
+  affiliation: Bosch Global Software Technologies
+  time: "05:30 PM - 05.50 PM IST"
+  room: 230
+  image_url: ../images/ganesh.jpg
+  image: ../../images/ganesh.jpg
+  abstract: |
+    This talk presents a high-performance, resource-efficient translation service built with Rust microservices, delivering human-level translation quality across all European languages. By leveraging Rust's performance, safety, and concurrency, we developed a modular system using seven microservices, deployed on Azure Kubernetes Service (AKS). Key technical highlights include the use of the Axum web framework, SQLx for asynchronous database interactions, and Azure Entra for Single Sign-On (SSO) integration. The system is optimized for efficiency, with low-load microservices running on as little as 200 millicores of CPU and 256 MB of memory, achieving significant resource savings compared to other language implementations. We also share insights on building custom shared libraries to streamline development and improve maintainability. This work showcases the potential of Rust for building scalable, secure, and highly efficient microservices in production environments, contributing valuable lessons for the Rust community and cloud-native development.
+  biography: |
+    Development Lead @ BGSW<br>
+    Ganesh is an experienced full-stack developer with over 9 years of expertise in building scalable software solutions across various domains. His background encompasses a wide range of technologies, including Java, Scala, Big Data, Apache Spark, Angular, Docker, AWS, and Azure. Currently, he is focused on creating Rust-based solutions for customers, specializing in integrating Rust into production environments to leverage its performance and safety features.
+    Ganesh has contributed to developing solutions using Large Language Models (LLMs) with Rust as the backend, enhancing AI-driven applications. He has played a key role in developing the next-generation semantic layer using AI and Cognitive Services for multi-modal translation, virtual assistants, and search. He is experienced in using Azure Kubernetes Service (AKS) and managing Azure infrastructure and CI/CD pipelines with GitOps and Docker.
+    His work highlights his expertise in building robust applications while leveraging Rust's capabilities to deliver high-performance and safe software solutions. Ganesh continues to drive innovation by integrating cutting-edge technologies and methodologies to meet evolving industry demands.
+
+
+hossein:
+  topic: Rust Application for Beverage Dispenser Control
+  presenter: Hossein Karimi Arjomand 
+  affiliation: PRODYNA SE
+  time: "05:50 PM - 06.10 PM IST"
+  room: 230
+  image_url: ../images/hossein.jpg
+  image: ../../images/hossein.jpg
+  abstract: |
+    This presentation introduces the development of a high-performance Rust application created to interface with and control beverage dispenser systems for a global company serving hotels and cruise ships worldwide. Optimized for an armhf (32-bit) platform, this solution is built for a near-embedded environment, emphasizing efficiency and speed. Leveraging Rust’s robust performance and safety features alongside the Raylib library for interactive graphics, the application is tailored to meet the demanding standards of the hospitality industry.
+    <br>Key topics include: 
+    <br> - Introduction
+    <br> - Project scope, requirements, and objectives 
+    <br> - Core technologies: Rust and Raylib 
+    <br> - Comparative statistics with the previous solution 
+    <br> - Highlights of noteworthy Rust code sections 
+
+  biography: |
+    Fullstack Software Engineer @ <a href="https://www.prodyna.com/" target="_blank">PRODYNA SE</a><br>
+    with a strong passion for low-level programming languages like C++ and Rust. With a versatile background in various aspects of software engineering, I prioritize writing clean, efficient, and maintainable code.
+    Three years ago, I began exploring Rust in my spare time, working on hobby projects with technologies such as WebAssembly (Wasm) and the Yew framework. Now, I’m excited to share our experiences and insights from using Rust in a professional setting
+
+
+sanchayan:
+  topic: Multimedia using Rust and GStreamer
+  presenter: Sanchayan Maity
+  affiliation: asymptotic.io
+  time: "06:10 PM - 06.30 PM IST"
+  room: 230
+  image_url: ../images/sanchayan.jpg
+  image: ../../images/sanchayan.jpg
+  abstract: |
+    A short primer on how Rust and GStreamer can be leveraged for building multimedia pipelines to support various kinds of media processing flows like live streaming, conferencing, recording, video editing, playback etc. 
+    The talk will give a short introduction to GStreamer and then cover the role Rust plays today in the context of multimedia and GStreamer.
+
+  biography: |
+    Coming from an Embedded Systems background, I have built my expertise working on the low level system side of things. 
+    For the last few years I have been working on GStreamer and PipeWire on the media side of things. 
+    I have organized the Rust and Haskell Bangalore meetups since 2018. 
+    In my spare time, I mostly read, code and dabble in Haskell, Rust and more recently Zig.
+
+# vivek:
+#  topic: Implementing Zenoh with Rust
+#  presenter: Vivek Kumar Pandey
+#  affiliation: ZettaScale Technology
+#  time: "06:30 PM - 06.50 PM IST"
+#  room: 230
+#  image_url: ../images/vivek.jpg
+#  image: ../../images/vivek.jpg
+#  abstract: |
+#    Building efficient and scalable distributed systems : Implementing Zenoh with Rust for V2V, Autonomous systems and Robotics
+#  biography: |
+#    Senior Solutions Architect @ <a href="https://www.zettascale.tech/" target="_blank">ZettaScale Technology</a><br>
+#    With over 12 years of experience, I specialize in Software-Defined Vehicles (SDV), Robot Operating System (ROS), real-time communication protocols, and distributed systems.
+#    My background spans multiple high-impact sectors, including automotive, robotics, defense & aerospace, and Industry 4.0.
+#    A passionate advocate for Free and Open Source Software (FOSS), I am continuously exploring emerging technologies.
+#    My technical expertise encompasses Rust, C, C++, Python and various platforms critical to the evolution of connected and autonomous systems.
+
