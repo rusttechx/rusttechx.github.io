@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate Information | RustTechX Summit by BGSW</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --electric-blue: #2B59C3;
+            --soft-blue: #A7C6ED;
+            --rust-orange: #E76F51;
+            --peach: #F4A261;
+            --lime-green: #70EE9C;
+            --lavender: #E2CFEA;
+            --off-white: #F8F9FA;
+            --light-gray: #DEE2E6;
+            --dark-gray: #495057;
+            --pastel-pink: #FFD6E0;
+            --pastel-purple: #C3B1E1;
+            --pastel-blue: #AFCBFF;
+            --pastel-mint: #B5EAD7;
+            --pastel-yellow: #FFEAC9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--off-white);
+            color: var(--dark-gray);
+            overflow-x: hidden;
+        }
+
+        /* Header Styles - Same as home page */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(248, 249, 250, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 1rem 5%;
+            background-color: rgba(248, 249, 250, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 50px;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled .logo img {
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--electric-blue);
+        }
+
+        .logo-text span {
+            color: var(--rust-orange);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--electric-blue);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--electric-blue);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .register-btn {
+            background-color: var(--rust-orange);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .register-btn:hover {
+            background-color: var(--peach);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(231, 111, 81, 0.3);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Corporate Info Section */
+        .corporate-section {
+            padding: 8rem 5% 5rem;
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--pastel-mint) 0%, var(--pastel-blue) 100%);
+            min-height: calc(100vh - 80px);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--electric-blue);
+        }
+
+        .corporate-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: var(--pastel-purple);
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+            transition: all 0.3s ease;
+        }
+
+        .corporate-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .info-section {
+            margin-bottom: 3rem;
+        }
+
+        .info-section h2 {
+            color: var(--rust-orange);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .info-section h2 i {
+            color: var(--electric-blue);
+        }
+
+        .info-card {
+            background-color: var(--pastel-yellow);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--pastel-purple);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid var(--rust-orange);
+        }
+
+        .info-card h3 {
+            color: var(--electric-blue);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .info-card p,
+        .info-card address {
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card a {
+            color: var(--electric-blue);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .info-card a:hover {
+            color: var(--rust-orange);
+            text-decoration: underline;
+        }
+
+        .detail-row {
+            display: flex;
+            margin-bottom: 1rem;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            min-width: 150px;
+            color: var(--electric-blue);
+        }
+
+        .detail-value {
+            flex: 1;
+        }
+
+        /* Footer - Same as home page */
+        footer {
+            background-color: var(--dark-gray);
+            color: white;
+            padding: 5rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo img {
+            height: 40px;
+        }
+
+        .footer-logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .footer-logo-text span {
+            color: var(--rust-orange);
+        }
+
+        .footer-about p {
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--rust-orange);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--rust-orange);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links ul li a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--lime-green);
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-contact i {
+            color: var(--rust-orange);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+
+
+
+        /* About Links Boxes */
+        .about-links-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .about-link-box {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+            border-top: 3px solid var(--pastel-purple);
+        }
+
+        .about-link-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-top: 3px solid var(--rust-orange);
+        }
+
+        .about-link-box a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+        }
+
+        .about-link-box i {
+            font-size: 1.8rem;
+            color: var(--rust-orange);
+            margin-bottom: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .about-link-box:hover i {
+            transform: scale(1.1);
+            color: var(--electric-blue);
+        }
+
+        .about-link-box span {
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .about-link-box:hover span {
+            color: var(--electric-blue);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .corporate-container {
+                padding: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--off-white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 3rem;
+                transition: all 0.5s ease;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+
+            .hamburger .line {
+                width: 30px;
+                height: 3px;
+                background-color: var(--dark-gray);
+                margin: 5px;
+                transition: all 0.3s ease;
+            }
+
+            .hamburger.active .line:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .hamburger.active .line:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .line:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            .corporate-container {
+                padding: 2rem;
+            }
+
+            .info-card {
+                padding: 1.5rem;
+            }
+
+            .detail-row {
+                flex-direction: column;
+            }
+
+            .detail-label {
+                margin-bottom: 0.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .corporate-container {
+                padding: 1.5rem;
+            }
+
+            .info-card {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="logo">
+            <a href="home.html" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="RustTechX-Summit2025-logo.png" alt="RustTechX Summit 2025 Logo">
+
+            </a>
+        </div>
+
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="agenda.html">Agenda</a></li>
+                <li><a href="keynotes.html">Keynotes</a></li>
+                <li><a href="speakers.html">Speakers</a></li>
+                <li><a href="venue.html">Venue</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="register.html" class="register-btn">Register</a></li>
+            </ul>
+        </nav>
+
+        <div class="hamburger" id="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </header>
+
+    <!-- Corporate Information Section -->
+    <section class="corporate-section">
+        <h2 class="section-title">Corporate Information</h2>
+        <div class="corporate-container">
+            <div class="info-section">
+                <h2><i class="fas fa-info-circle"></i> About the Organizer</h2>
+                <div class="info-card">
+                    <p>RustTechX Summit 2024 is proudly organized by Bosch Global Software Technologies Private Limited
+                        (BGSW). Below are the official details of our organizing entity.</p>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2><i class="fas fa-building"></i> Name and Address</h2>
+                <div class="info-card">
+                    <address>
+                        Bosch Global Software Technologies Private Limited (BGSW)<br>
+                        123, Industrial Layout,<br>
+                        Hosur Road, Koramangala, Bengaluru · 580095, India
+                    </address>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2><i class="fas fa-users"></i> Board of Management</h2>
+                <div class="info-card">
+                    <div class="detail-row">
+                        <div class="detail-label">Managing Director:</div>
+                        <div class="detail-value">Mr. Dattatri Salagame</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2><i class="fas fa-address-book"></i> Contact Information</h2>
+                <div class="info-card">
+                    <div class="detail-row">
+                        <div class="detail-label">Phone:</div>
+                        <div class="detail-value">+91(80)6657-4891</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Email:</div>
+                        <div class="detail-value"><a href="mailto:contact@rusttechx.com">Contact Us</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2><i class="fas fa-file-alt"></i> Registration Details</h2>
+                <div class="info-card">
+                    <div class="detail-row">
+                        <div class="detail-label">CIN Number:</div>
+                        <div class="detail-value">U72400KA1997PTC023164</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">GSTIN:</div>
+                        <div class="detail-value">29AAACR7108R12R</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- About Links Section -->
+        <div class="about-links-container fade-in delay-3">
+            <div class="about-link-box">
+                <a href="call-for-papers.html">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Call for Papers</span>
+                </a>
+            </div>
+            <div class="about-link-box">
+                <a href="code-of-conduct.html">
+                    <i class="fas fa-users"></i>
+                    <span>Code of Conduct</span>
+                </a>
+            </div>
+            <div class="about-link-box">
+                <a href="corporate-info.html">
+                    <i class="fas fa-building"></i>
+                    <span>Corporate Info</span>
+                </a>
+            </div>
+            <div class="about-link-box">
+                <a href="data-protection.html">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Data Protection</span>
+                </a>
+            </div>
+            <div class="about-link-box">
+                <a href="legal-notice.html">
+                    <i class="fas fa-gavel"></i>
+                    <span>Legal Notice</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="RustTechX-Summit2025-logo.png" alt="RustTechX Logo">
+                </div>
+                <p>Annual Rust Conference organized by Bosch Global Software Technologies, where Rust enthusiasts
+                    converge to explore innovative ideas.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="agenda.html">Agenda</a></li>
+                    <li><a href="keynotes.html">Keynotes</a></li>
+                    <li><a href="speakers.html">Speakers</a></li>
+                    <li><a href="venue.html">Venue</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Bosch Koramangala, Building 905, Room 230</p>
+                <p><i class="fas fa-envelope"></i> contact@rusttechx.com</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright &copy; 2025 Bosch Global Software Technologies Private Limited, all rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Ensure page loads at top
+        window.addEventListener('load', function () {
+            window.scrollTo(0, 0);
+        });
+    </script>
+</body>
+
+</html>

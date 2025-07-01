@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RustTechX Summit 2025 | Innovate & Integrate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --electric-blue: #2B59C3;
+            --soft-blue: #A7C6ED;
+            --rust-orange: #E76F51;
+            --peach: #F4A261;
+            --lime-green: #70EE9C;
+            --lavender: #E2CFEA;
+            --off-white: #F8F9FA;
+            --light-gray: #DEE2E6;
+            --dark-gray: #495057;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--off-white);
+            color: var(--dark-gray);
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(248, 249, 250, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 1rem 5%;
+            background-color: rgba(248, 249, 250, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 50px;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled .logo img {
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--electric-blue);
+        }
+
+        .logo-text span {
+            color: var(--rust-orange);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--electric-blue);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--electric-blue);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .register-btn {
+            /* existing styles */
+        }
+
+        /* To this: */
+        .register-btn,
+        a.register-btn {
+            background-color: var(--rust-orange);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .register-btn:hover,
+        a.register-btn:hover {
+            background-color: var(--peach);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(231, 111, 81, 0.3);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--soft-blue) 0%, var(--lavender) 100%);
+            z-index: -1;
+            opacity: 0.7;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--electric-blue);
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--rust-orange);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .hero-btns .primary-btn {
+            background-color: var(--electric-blue);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .hero-btns .primary-btn:hover {
+            background-color: var(--lime-green);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(43, 89, 195, 0.3);
+        }
+
+        .hero-btns .secondary-btn {
+            background-color: transparent;
+            color: var(--electric-blue);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid var(--electric-blue);
+            transition: all 0.3s ease;
+        }
+
+        .hero-btns .secondary-btn:hover {
+            background-color: var(--electric-blue);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 5%;
+            width: 40%;
+            max-width: 600px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* Particles Background */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* About Section */
+        .about {
+            padding: 8rem 5%;
+            background-color: #EAE6FF;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--electric-blue);
+        }
+
+        .about-content {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--rust-orange);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .rust-logo {
+            width: 100%;
+            max-width: 400px;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 8rem 5%;
+            background-color: #EDF4FF;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #EDF4FF !important;
+        }
+
+        .feature-card {
+            background-color: #E8E0F5;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--electric-blue);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--rust-orange);
+        }
+
+        .feature-card p {
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+
+        /* Countdown Section */
+        .countdown {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, var(--electric-blue) 0%, var(--soft-blue) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .countdown h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .countdown-box {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 2rem;
+            min-width: 120px;
+            backdrop-filter: blur(5px);
+        }
+
+        .countdown-box span {
+            display: block;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .countdown-box small {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: white;
+            padding: 5rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo img {
+            height: 40px;
+        }
+
+        .footer-logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .footer-logo-text span {
+            color: var(--rust-orange);
+        }
+
+        .footer-about p {
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--rust-orange);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--rust-orange);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links ul li a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--lime-green);
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-contact i {
+            color: var(--rust-orange);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--off-white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 3rem;
+                transition: all 0.5s ease;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+
+            .hamburger .line {
+                width: 30px;
+                height: 3px;
+                background-color: var(--dark-gray);
+                margin: 5px;
+                transition: all 0.3s ease;
+            }
+
+            .hamburger.active .line:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .hamburger.active .line:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .line:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                justify-content: center;
+                padding-top: 100px;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .hero-btns {
+                justify-content: center;
+            }
+
+            .hero-image {
+                position: relative;
+                right: auto;
+                width: 80%;
+                margin-top: 3rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .countdown-box {
+                padding: 1.5rem;
+                min-width: 80px;
+            }
+
+            .countdown-box span {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <!-- In the header section, change the logo div to this: -->
+        <div class="logo">
+            <a href="#home" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="RustTechX-Summit2025-logo.png" alt="RustTechX Summit 2025 Logo">
+            </a>
+        </div>
+
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="agenda.html">Agenda</a></li>
+                <li><a href="keynotes.html">Keynotes</a></li>
+                <li><a href="speakers.html">Speakers</a></li>
+                <li><a href="venue.html">Venue</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="register.html" class="register-btn">Register</a></li>
+            </ul>
+        </nav>
+
+        <div class="hamburger" id="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div id="particles-js"></div>
+        <div class="hero-content">
+            <h1>RustTechX Summit <span>2025</span></h1>
+            <p>Join us at the Annual Rust Conference organized by Bosch Global Software Technologies, where Rust
+                enthusiasts converge to explore innovative ideas in Rust development, from chip to cloud.</p>
+            <div class="hero-btns">
+                <a href="register.html" class="primary-btn">Register Now</a>
+            </div>
+        </div>
+        <img src="poster.jpg" alt="RustTechX Summit 2025" class="hero-image">
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title fade-in">About The Summit</h2>
+        <div class="about-content">
+            <div class="about-text fade-in">
+                <h3>Innovate & Integrate</h3>
+                <p>We are excited to invite you to <strong>RustTechX Summit 2025</strong>, where the Rust team at Bosch
+                    will connect with the broader community to showcase cutting-edge open-source ideas.</p>
+                <p>Join us in person at Bosch Koramangala, Building 905, Room 230 or participate virtually from
+                    anywhere!</p>
+                <p>This year's summit will feature groundbreaking talks, hands-on workshops, and networking
+                    opportunities with the brightest minds in Rust development.</p>
+            </div>
+            <div class="about-image fade-in">
+                <img src="RustTechX-Summit2025-logo.png" alt="Rust Logo" class="rust-logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2 class="section-title fade-in">Why Attend?</h2>
+        <div class="features-grid">
+            <div class="feature-card fade-in">
+                <div class="feature-icon">💡</div>
+                <h3>Innovative Talks</h3>
+                <p>Learn from industry leaders about the latest advancements in Rust programming and its applications.
+                </p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🤝</div>
+                <h3>Networking</h3>
+                <p>Connect with Rust enthusiasts, contributors, and professionals from around the world.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🛠️</div>
+                <h3>Hands-on Workshops</h3>
+                <p>Participate in interactive sessions to enhance your Rust skills with practical experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="countdown" id="countdown">
+        <h2 class="fade-in">Summit Starts In</h2>
+        <div class="countdown-container fade-in">
+            <div class="countdown-box">
+                <span id="days">00</span>
+                <small>Days</small>
+            </div>
+            <div class="countdown-box">
+                <span id="hours">00</span>
+                <small>Hours</small>
+            </div>
+            <div class="countdown-box">
+                <span id="minutes">00</span>
+                <small>Minutes</small>
+            </div>
+            <div class="countdown-box">
+                <span id="seconds">00</span>
+                <small>Seconds</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="RustTechX-Summit2025-logo.png" alt="RustTechX Logo">
+                </div>
+                <p>Annual Rust Conference organized by Bosch Global Software Technologies, where Rust enthusiasts
+                    converge to explore innovative ideas.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="agenda.html">Agenda</a></li>
+                    <li><a href="keynotes.html">Keynotes</a></li>
+                    <li><a href="speakers.html">Speakers</a></li>
+                    <li><a href="venue.html">Venue</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Bosch Koramangala, Building 905, Room 230</p>
+                <p><i class="fas fa-envelope"></i> contact@rusttechx.com</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright &copy; 2025 Bosch Global Software Technologies Private Limited , all rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Countdown Timer
+        function updateCountdown() {
+            const countdownDate = new Date('sep 15, 2025 09:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = Math.floor(hours).toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = Math.floor(minutes).toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = Math.floor(seconds).toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Scroll Animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        function checkScroll() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+
+        // Initialize Particles.js
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#2B59C3"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#A7C6ED",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        // Ensure page loads at top and logo links to top
+        window.addEventListener('load', function () {
+            // Scroll to top on page load
+            window.scrollTo(0, 0);
+
+            // Logo click handler
+            document.querySelector('.logo a').addEventListener('click', function (e) {
+                // Only if we're already on home page
+                if (window.location.hash === '#home' || window.location.hash === '') {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

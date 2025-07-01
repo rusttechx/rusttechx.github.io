@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RustTechX Summit by BGSW | Pioneering Rust from Chip to Cloud</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --electric-blue: #2B59C3;
+            --soft-blue: #A7C6ED;
+            --rust-orange: #E76F51;
+            --peach: #F4A261;
+            --lime-green: #70EE9C;
+            --lavender: #E2CFEA;
+            --off-white: #F8F9FA;
+            --light-gray: #DEE2E6;
+            --dark-gray: #495057;
+            --pastel-pink: #FFD6E0;
+            --pastel-purple: #C3B1E1;
+            --pastel-blue: #AFCBFF;
+            --pastel-mint: #B5EAD7;
+            --pastel-yellow: #FFEAC9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--off-white);
+            color: var(--dark-gray);
+            overflow-x: hidden;
+        }
+
+        /* Header Styles - Same as home page */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(248, 249, 250, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 1rem 5%;
+            background-color: rgba(248, 249, 250, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 50px;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled .logo img {
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--electric-blue);
+        }
+
+        .logo-text span {
+            color: var(--rust-orange);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--electric-blue);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--electric-blue);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .register-btn {
+            background-color: var(--rust-orange);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .register-btn:hover {
+            background-color: var(--peach);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(231, 111, 81, 0.3);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Summit Overview Section */
+        .summit-section {
+            padding: 8rem 5% 5rem;
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--pastel-blue) 0%, var(--pastel-mint) 100%);
+            transition: background 0.5s ease;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--electric-blue);
+            transition: all 0.3s ease;
+        }
+
+        .section-title:hover {
+            transform: scale(1.02);
+        }
+
+        .summit-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: var(--lavender);
+            /* Changed to pastel lavender */
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+            transition: all 0.3s ease;
+        }
+
+        .summit-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .summit-intro {
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .summit-highlights {
+            margin: 3rem 0;
+        }
+
+        .highlight-card {
+            background-color: rgba(255, 255, 255, 0.8);
+            /* Semi-transparent white */
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            border-left: 5px solid var(--rust-orange);
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            /* Solid white on hover */
+        }
+
+        .highlight-card h3 {
+            color: var(--electric-blue);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .highlight-card h3 i {
+            color: var(--rust-orange);
+        }
+
+        .highlight-card p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-card ul {
+            margin-left: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .highlight-card ul li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .highlight-card ul li::before {
+            content: '•';
+            color: var(--rust-orange);
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background-color: rgba(255, 255, 255, 0.8);
+            /* Semi-transparent white */
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+            border-top: 3px solid var(--pastel-purple);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-top: 3px solid var(--rust-orange);
+            background-color: white;
+            /* Solid white on hover */
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--electric-blue);
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+            color: var(--rust-orange);
+        }
+
+        .feature-card h4 {
+            color: var(--electric-blue);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .feature-card p {
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, var(--pastel-purple) 0%, var(--pastel-pink) 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-card h3 {
+            color: var(--electric-blue);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--rust-orange);
+        }
+
+        /* Footer - Same as home page */
+        footer {
+            background-color: var(--dark-gray);
+            color: white;
+            padding: 5rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo img {
+            height: 40px;
+        }
+
+        .footer-logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .footer-logo-text span {
+            color: var(--rust-orange);
+        }
+
+        .footer-about p {
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--rust-orange);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--rust-orange);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links ul li a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--lime-green);
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-contact i {
+            color: var(--rust-orange);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+
+        /* About Links Boxes */
+        .about-links-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .about-link-box {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+            border-top: 3px solid var(--pastel-purple);
+        }
+
+        .about-link-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-top: 3px solid var(--rust-orange);
+        }
+
+        .about-link-box a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+        }
+
+        .about-link-box i {
+            font-size: 1.8rem;
+            color: var(--rust-orange);
+            margin-bottom: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .about-link-box:hover i {
+            transform: scale(1.1);
+            color: var(--electric-blue);
+        }
+
+        .about-link-box span {
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .about-link-box:hover span {
+            color: var(--electric-blue);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.8s;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .summit-container {
+                padding: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--off-white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 3rem;
+                transition: all 0.5s ease;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+
+            .hamburger .line {
+                width: 30px;
+                height: 3px;
+                background-color: var(--dark-gray);
+                margin: 5px;
+                transition: all 0.3s ease;
+            }
+
+            .hamburger.active .line:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .hamburger.active .line:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .line:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            .summit-container {
+                padding: 2rem;
+            }
+
+            .highlight-card {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .summit-container {
+                padding: 1.5rem;
+            }
+
+            .highlight-card {
+                padding: 1.2rem;
+            }
+
+            .contact-item {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="logo">
+            <a href="home.html" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="RustTechX-Summit2025-logo.png" alt="RustTechX Summit 2025 Logo">
+            </a>
+        </div>
+
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="agenda.html">Agenda</a></li>
+                <li><a href="keynotes.html">Keynotes</a></li>
+                <li><a href="speakers.html">Speakers</a></li>
+                <li><a href="venue.html">Venue</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="register.html" class="register-btn">Register</a></li>
+            </ul>
+        </nav>
+
+        <div class="hamburger" id="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </header>
+
+    <!-- Summit Overview Section -->
+    <section class="summit-section" id="overview">
+        <h2 class="section-title fade-in">RustTechX Summit by BGSW: Pioneering Rust from Chip to Cloud</h2>
+        <div class="summit-container">
+            <div class="summit-intro fade-in delay-1">
+                <p>The RustTechX Summit, hosted by Rust team at Bosch Global Software Technologies (BGSW), is a premier
+                    event for Rust enthusiasts, developers, and industry leaders. It's the place to explore cutting-edge
+                    innovations and best practices in Rust, with a focus on embedded systems, cloud computing, and
+                    beyond.</p>
+                <p>Known for its memory safety, performance, and concurrency, Rust's versatility is showcased across
+                    diverse applications—automotive, IoT, industrial automation, and more. Bosch's deep expertise in
+                    both hardware and software offers unique insights into how Rust streamlines development in these
+                    areas.</p>
+            </div>
+
+            <div class="summit-highlights">
+                <div class="highlight-card fade-in delay-1">
+                    <h3><i class="fas fa-star"></i> Summit Highlights</h3>
+                    <p>RustTechX isn't just a conference; it's a celebration of Rust's power to drive innovation,
+                        offering valuable insights and connections to developers at every stage of their Rust journey.
+                    </p>
+                    <ul>
+                        <li>Keynotes from Rust experts, Bosch thought leaders, and open-source contributors</li>
+                        <li>Deep dives into topics like memory safety, async programming, and Rust's evolving role in
+                            software engineering</li>
+                        <li>Abundant networking opportunities from interactive sessions to informal meetups</li>
+                        <li>Showcases of Rust startups and real-world applications</li>
+                        <li>Live-streamed sessions for global participants</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card fade-in delay-2">
+                    <div class="feature-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h4>Embedded Systems</h4>
+                    <p>Explore how Rust revolutionizes embedded development with safety and performance</p>
+                </div>
+
+                <div class="feature-card fade-in delay-2">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h4>Cloud Computing</h4>
+                    <p>Discover Rust's growing role in scalable, reliable cloud infrastructure</p>
+                </div>
+
+                <div class="feature-card fade-in delay-3">
+                    <div class="feature-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h4>Automotive</h4>
+                    <p>Learn about Rust applications in next-generation automotive systems</p>
+                </div>
+
+                <div class="feature-card fade-in delay-3">
+                    <div class="feature-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h4>IoT</h4>
+                    <p>See how Rust enables secure and efficient IoT solutions</p>
+                </div>
+            </div>
+
+
+            <!-- About Links Section -->
+            <div class="about-links-container fade-in delay-3">
+                <div class="about-link-box">
+                    <a href="call-for-papers.html">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Call for Papers</span>
+                    </a>
+                </div>
+                <div class="about-link-box">
+                    <a href="code-of-conduct.html">
+                        <i class="fas fa-users"></i>
+                        <span>Code of Conduct</span>
+                    </a>
+                </div>
+                <div class="about-link-box">
+                    <a href="corporate.html">
+                        <i class="fas fa-building"></i>
+                        <span>Corporate Info</span>
+                    </a>
+                </div>
+                <div class="about-link-box">
+                    <a href="data-protection-notice.html">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Data Protection</span>
+                    </a>
+                </div>
+                <div class="about-link-box">
+                    <a href="legal-notice.html">
+                        <i class="fas fa-gavel"></i>
+                        <span>Legal Notice</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-card fade-in delay-4">
+                <h3>Contact Us</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <span>contact@rusttechx.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                        <span>Bosch Koramangala, Bangalore</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="RustTechX-Summit2025-logo.png" alt="RustTechX Logo">
+                </div>
+                <p>Annual Rust Conference organized by Bosch Global Software Technologies, where Rust enthusiasts
+                    converge to explore innovative ideas.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="agenda.html">Agenda</a></li>
+                    <li><a href="keynotes.html">Keynotes</a></li>
+                    <li><a href="speakers.html">Speakers</a></li>
+                    <li><a href="venue.html">Venue</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Bosch Koramangala, Building 905, Room 230</p>
+                <p><i class="fas fa-envelope"></i> contact@rusttechx.com</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright &copy; 2025 Bosch Global Software Technologies Private Limited, all rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll Animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        function checkScroll() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementTop < windowHeight - 100) {
+                    element.style.animationPlayState = 'running';
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+
+        // Ensure page loads at top
+        window.addEventListener('load', function () {
+            window.scrollTo(0, 0);
+        });
+    </script>
+</body>
+
+</html>

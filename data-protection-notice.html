@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Protection - RustTechX Summit 2024</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --electric-blue: #2B59C3;
+            --soft-blue: #A7C6ED;
+            --rust-orange: #E76F51;
+            --peach: #F4A261;
+            --lime-green: #70EE9C;
+            --lavender: #E2CFEA;
+            --off-white: #F8F9FA;
+            --light-gray: #DEE2E6;
+            --dark-gray: #495057;
+            --pastel-pink: #FFD6E0;
+            --pastel-purple: #C3B1E1;
+            --pastel-blue: #AFCBFF;
+            --pastel-mint: #B5EAD7;
+            --pastel-yellow: #FFEAC9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--off-white);
+            color: var(--dark-gray);
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(248, 249, 250, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 1rem 5%;
+            background-color: rgba(248, 249, 250, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 50px;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled .logo img {
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--electric-blue);
+        }
+
+        .logo-text span {
+            color: var(--rust-orange);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--electric-blue);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--electric-blue);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .register-btn {
+            background-color: var(--rust-orange);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .register-btn:hover {
+            background-color: var(--peach);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(231, 111, 81, 0.3);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Data Protection Page Specific Styles */
+        .data-protection-section {
+            padding: 8rem 5% 5rem;
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--pastel-mint) 0%, var(--lavender) 100%);
+            min-height: 100vh;
+        }
+
+        .data-protection-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--pastel-pink);
+            /* Changed to pastel blue */
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--electric-blue);
+        }
+
+        .section-subtitle {
+            color: var(--rust-orange);
+            margin: 2rem 0 1rem;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--peach);
+            padding-bottom: 0.5rem;
+        }
+
+        .data-protection-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .data-protection-content h3 {
+            margin: 1.5rem 0 0.8rem;
+            color: var(--electric-blue);
+            font-size: 1.2rem;
+        }
+
+        .data-protection-content p {
+            margin-bottom: 1rem;
+        }
+
+        .data-protection-content ul {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        .data-protection-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--peach), transparent);
+            margin: 2rem 0;
+            border: none;
+        }
+
+        /* About Links Boxes */
+        .about-links-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .about-link-box {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+            border-top: 3px solid var(--pastel-purple);
+        }
+
+        .about-link-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-top: 3px solid var(--rust-orange);
+        }
+
+        .about-link-box a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+        }
+
+        .about-link-box i {
+            font-size: 1.8rem;
+            color: var(--rust-orange);
+            margin-bottom: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .about-link-box:hover i {
+            transform: scale(1.1);
+            color: var(--electric-blue);
+        }
+
+        .about-link-box span {
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .about-link-box:hover span {
+            color: var(--electric-blue);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--dark-gray);
+            color: white;
+            padding: 5rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo img {
+            height: 40px;
+        }
+
+        .footer-logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .footer-logo-text span {
+            color: var(--rust-orange);
+        }
+
+        .footer-about p {
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--rust-orange);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--rust-orange);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links ul li a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--lime-green);
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-contact i {
+            color: var(--rust-orange);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+
+        /* About Links Boxes */
+        .about-links-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .about-link-box {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+            border-top: 3px solid var(--pastel-purple);
+        }
+
+        .about-link-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-top: 3px solid var(--rust-orange);
+        }
+
+        .about-link-box a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+        }
+
+        .about-link-box i {
+            font-size: 1.8rem;
+            color: var(--rust-orange);
+            margin-bottom: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .about-link-box:hover i {
+            transform: scale(1.1);
+            color: var(--electric-blue);
+        }
+
+        .about-link-box span {
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .about-link-box:hover span {
+            color: var(--electric-blue);
+        }
+
+
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.8s;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .data-protection-container {
+                padding: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--off-white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 3rem;
+                transition: all 0.5s ease;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+
+            .hamburger .line {
+                width: 30px;
+                height: 3px;
+                background-color: var(--dark-gray);
+                margin: 5px;
+                transition: all 0.3s ease;
+            }
+
+            .hamburger.active .line:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .hamburger.active .line:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .line:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            .data-protection-container {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .data-protection-container {
+                padding: 1.5rem;
+            }
+
+            .section-subtitle {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="logo">
+            <a href="home.html" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="RustTechX-Summit2025-logo.png" alt="RustTechX Summit 2025 Logo">
+            </a>
+        </div>
+
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="agenda.html">Agenda</a></li>
+                <li><a href="keynotes.html">Keynotes</a></li>
+                <li><a href="speakers.html">Speakers</a></li>
+                <li><a href="venue.html">Venue</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="register.html" class="register-btn">Register</a></li>
+            </ul>
+        </nav>
+
+        <div class="hamburger" id="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </header>
+
+    <!-- Data Protection Content -->
+    <section class="data-protection-section">
+        <div class="data-protection-container fade-in">
+            <h1 class="section-title">Data Protection</h1>
+
+            <div class="data-protection-content">
+                <p>The Bosch Global Software Technologies Pvt Ltd., (henceforth "Bosch," "we," or "us") appreciates your
+                    visit to our websites and mobile applications (collectively also referred to as our "online
+                    services"), as well as your interest in our company and our products.</p>
+
+                <h2 class="section-subtitle fade-in delay-1">1. Bosch respects your privacy</h2>
+                <p>The protection of your privacy throughout the course of processing personal data as well as the
+                    security of all business data are important concerns to us. We process personal data that was
+                    gathered during your visit of our Online Offers confidentially and only in accordance with statutory
+                    regulations.</p>
+                <p>Data protection and information security are included in our corporate policy.</p>
+
+
+
+                <h2 class="section-subtitle fade-in delay-1">2. Controller</h2>
+                <p>Bosch Global Software Technologies Pvt Ltd., is the controller responsible for the processing of your
+                    data; exceptions are outlined in this data protection notice.</p>
+                <p>Our contact details are as follows:</p>
+                <address>
+                    Bosch Global Software Technologies (BGSW) Private Limited<br>
+                    123, Industrial Layout<br>
+                    Hosur Road<br>
+                    Koramangala<br>
+                    Bengaluru 560095<br>
+                    Email: <a href="mailto:connect@in.bosch.com">connect@in.bosch.com</a>
+                </address>
+
+                <div class="data-protection-content">
+                    <h2 class="section-subtitle fade-in delay-1">3. Collection, processing, and usage of personal data
+                    </h2>
+
+                    <h3>3.1 - Processed data categories</h3>
+                    <p>Communication data (e.g. name, telephone number, e-mail address, address, IP address) are
+                        processed.</p>
+
+                    <h3>3.2 - Principles</h3>
+                    <p>Personal data consists of all information related to an identified or identifiable natural
+                        person, this includes, e.g. names, addresses, phone numbers, email addresses, contractual master
+                        data, contract accounting, and payment data, which is an expression of a person's identity.</p>
+                    <p>We collect, process, and use personal data (including IP addresses) only when there is either a
+                        statutory legal basis to do so or if you have given your consent to the processing or use of
+                        personal data concerning this matter, e.g. by means of registration.</p>
+
+                    <h3>3.3 - Processing purposes and legal basis</h3>
+                    <p>We as well as the service providers commissioned by us, process your personal data for the
+                        following processing purposes:</p>
+
+                    <h4>3.3.1 - Provision of these online offers</h4>
+                    <ul>
+                        <li>Legal basis: Predominantly, legitimate interest on our part in direct marketing as long as
+                            this occurs in accordance with data protection and competition law.</li>
+                    </ul>
+
+                    <h4>3.3.2 - In reply to user inquiries in the framework of a contact form</h4>
+                    <ul>
+                        <li>Legal basis: Predominantly, legitimate interest in direct marketing on our part and in the
+                            enhancement of our products and services, as long as this is carried out in compliance with
+                            data protection regulations and competition law regulations resp. contractual performance
+                            resp. consent.</li>
+                    </ul>
+
+                    <h4>3.3.3 - To answer user requests within the scope of a chatbot</h4>
+                    <ul>
+                        <li>Legal bases: our legitimate interest in improving our products and services; obtaining
+                            consent</li>
+                    </ul>
+
+                    <h4>3.3.4 - Resolving service disruptions as well as for security reasons</h4>
+                    <ul>
+                        <li>Legal basis: Fulfillment of our legal obligations within the scope of data security and
+                            predominantly, legitimate interest in resolving service disruptions as well as in the
+                            protection of our offers.</li>
+                    </ul>
+
+                    <h4>3.3.5 - Self-promotion and promotion by others as well as market research and reach analysis
+                        done within the scope statutorily permitted or based on consent</h4>
+                    <ul>
+                        <li>Legal basis: Consent or predominantly, legitimate interest on our part in direct marketing
+                            if in accordance with data protection and competition law.</li>
+                    </ul>
+
+                    <h4>3.3.6 - Safeguarding and defending our rights</h4>
+                    <ul>
+                        <li>Legal basis: Legitimate interest on our part in the assertion and defense of our rights.
+                        </li>
+                    </ul>
+                    <h2 class="section-subtitle fade-in delay-1">3.4 Log files</h2>
+                    <p>Each time you use the internet, your browser is transmitting certain information which we store
+                        in so-called log files.</p>
+                    <p>We store log files to determine service disruptions and for security reasons (e.g., to
+                        investigate attack attempts) for a period of 7 days and delete them afterwards. Log files which
+                        need to be maintained for evidence purposes are excluded from deletion until the respective
+                        incident is resolved and may, on a case-by-case basis, be passed on to investigating
+                        authorities.</p>
+                    <p>Log files are also used for analysis purposes (without the IP address or without the complete IP
+                        address) see module 3.3.5 "Self-promotion and promotion by others as well as market research and
+                        reach analysis done within the scope statutorily permitted or based on consent"</p>
+                    <p>In log files, the following information is saved:</p>
+                    <ul>
+                        <li>IP address (internet protocol address) of the terminal device used to access the online
+                            offer;</li>
+                        <li>Internet address of the website from which the online offer is accessed (so-called URL of
+                            origin or referrer URL);</li>
+                        <li>Name of the service provider which was used to access the online offer;</li>
+                        <li>Name of the files or information accessed;</li>
+                        <li>Date and time as well as duration of recalling the data;</li>
+                        <li>Amount of data transferred;</li>
+                        <li>Operating system and information on the internet browser used, including add-ons installed
+                            (e.g., Flash Player);</li>
+                        <li>http status code (e.g., "Request successful" or "File requested not found").</li>
+                    </ul>
+
+                    <h2 class="section-subtitle fade-in delay-2">3.5 Chatbot</h2>
+                    <p>Within the scope of this online offer, we give you the opportunity to learn about the products
+                        and services offered by us by means of a chat. When using the chat, the chat conversation is
+                        recorded. After the chat, it will be deleted soon thereafter unless the chat is part of a
+                        support or service request. In the latter case, the chat's content is assigned to your customer
+                        account and will be saved for the purpose of fulfilling the contractual obligations.</p>
+
+                    <h2 class="section-subtitle fade-in delay-2">3.6 Children</h2>
+                    <p>This online offer is not meant for children under 16 years of age.</p>
+
+                    <h2 class="section-subtitle fade-in delay-2">3.7 Data transfer</h2>
+                    <h3>3.7.1 - Data transfer to other controllers</h3>
+                    <p>Principally, your personal data is forwarded to other controllers only if required for the
+                        fulfillment of a contractual obligation, or if we ourselves, or a third party, have a legitimate
+                        interest in the data transfer, or if you have given your consent. Particulars on the legal basis
+                        and the recipients or categories of recipients can be found in the section "Processing purposes
+                        and legal basis" (see no. 3.3).</p>
+                    <p>Additionally, data may be transferred to other controllers when we are obliged to do so due to
+                        statutory regulations or enforceable administrative or judicial orders.</p>
+
+                    <h3>3.7.2 - Service providers (general)</h3>
+                    <p>We involve external service providers with tasks such as sales and marketing services, contract
+                        management, payment handling, programming, data hosting, and hotline services. We have chosen
+                        those service providers carefully and monitor them on a regular basis, especially regarding
+                        their diligent handling of and protection of the data that they store. All service providers are
+                        obliged to maintain confidentiality and to comply with the statutory provisions. Service
+                        providers may also be other Bosch Group companies.</p>
+
+                    <h3>3.7.3 - Transfer to recipients outside the EEA</h3>
+                    <p>We might transfer personal data to recipients located outside the EEA into so-called third
+                        countries. In such cases, prior to the transfer we ensure that either the data recipient
+                        provides an appropriate level of data protection or that you have consented to the transfer. You
+                        are entitled to receive an overview of third country recipients and a copy of the specifically
+                        agreed-provisions securing an appropriate level of data protection. For this purpose, please use
+                        the statements made in the "Contact" section (see no. 11).</p>
+
+                    <h2 class="section-subtitle fade-in delay-3">3.8 - Duration of storage, retention periods</h2>
+                    <p>Principally, we store your data for as long as it is necessary to render our online offers and
+                        connected services or for as long as we have a legitimate interest in storing the data (e.g. we
+                        might still have a legitimate interest in postal mail marketing after fulfillment of our
+                        contractual obligations). In all other cases we delete your personal data with the exception of
+                        data we are obliged to store for the fulfillment of legal obligations (e.g. due to retention
+                        periods under the tax and commercial codes we are obliged to have documents such as contracts
+                        and invoices available for a certain period of time).</p>
+
+                    <h2 class="section-subtitle fade-in delay-3">4. Usage of cookies</h2>
+                    <p>In the context of our online service, cookies and tracking mechanisms may be used. Cookies are
+                        small text files that may be stored on your device when visiting our online service. Tracking is
+                        possible using different technologies. In particular, we process information using pixel
+                        technology and/or during log file analysis.</p>
+
+                    <h3>4.1 - Categories</h3>
+                    <p>We distinguish between cookies that are mandatorily required for the technical functions of the
+                        online service and such cookies and tracking mechanisms that are not mandatorily required for
+                        the technical function of the online service.</p>
+                    <p>Unlike service cannot be ensured. These include e.g. cookies that stole data to ensure amount
+                        reproduction of video or audio footage.</p>
+                    <p>Such cookies will be deleted when you leave the website.</p>
+
+                    <h3>4.1.2 - Cookies and tracking mechanisms that are technically not required</h3>
+                    <p>We use marketing cookies and tracking mechanisms. We only use such cookies and tracking
+                        mechanisms if you have given us your prior consent in each case. With the exception of the
+                        cookie that saves the current status of your privacy settings (selection cookie). This cookie is
+                        set based on legitimate interest.</p>
+                    <p>General</p>
+                    <p>By using marketing cookies and tracking mechanisms we and our partners are able to show you
+                        offerings based on your interests, resulting from an analysis of your user behavior:</p>
+                    <ul>
+                        <li>Statistics:
+                            By using statistical tools, we measure e.g. the number of your page views.</li>
+                        <li>Conversion tracking:
+                            Our conversion tracking partners place a cookie on your computer ("conversion cookie") if
+                            you accessed our website via an advertisement of the respective partner. Normally these
+                            cookies are no longer valid after 30 days. If you visit certain pages of our website and the
+                            cookie has not yet expired, we and the relevant conversion partner can recognize that a
+                            certain user clicked on the advertisement and thereby was redirected to our website. This
+                            can also be done across multiple devices. The information obtained by means of the
+                            conversion cookie serves the purpose of compiling conversion statistics and recording the
+                            total number of users who clicked on the respective advertisement and were redirected to a
+                            website with a conversion tracking tag.</li>
+                    </ul>
+                    <p>Please note that using the tools might include transfer of your data to recipients outside of the
+                        EEA where there is no adequate level of data protection pursuant to the GDPR (e.g. the USA). For
+                        more details in this respect please refer to the following description of the individual
+                        marketing tools:</p>
+                    <ul>
+                        <li>Name: Google Analytics
+                            Provider: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland
+                            Function: Analysis of user behavior (page retrievals, number of visitors and visits,
+                            downloads), creation of pseudonymous user profiles based on cross-device information of
+                            logged-in Google users (cross-device tracking), enrichment of pseudonymous user data with
+                            target group-specific information provided by Google, retargeting, UX testing, conversion
+                            tracking, and retargeting in conjunction with Google Ads</li>
+                        <li>Name: Google Tag Manager
+                            Provider: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland
+                            Function: Administration of website tags via a user interface, integration of program codes
+                            on our websites</li>
+                        <li>Name: Google Ads
+                            Provider: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland
+                            Function: Placement of advertisements, remarketing, conversion tracking
+                            Further information is available at: https://adssettings.google.com/authenticated</li>
+                    </ul>
+
+                    <h3>4.2 - Management of cookies and tracking mechanisms</h3>
+                    <p>You can manage your cookie and tracking mechanism settings in the browser and/or our privacy
+                        settings.</p>
+                    <p>Note: The settings you have made refer only to the browser used in each case.</p>
+
+                    <h3>4.2.1 - Deactivation of all cookies</h3>
+                    <p>If you wish to deactivate all cookies, please deactivate cookies in your browser settings. Please
+                        note that this may affect the functionality of the website.</p>
+
+                    <h3>4.2.2 - Management of your settings with regard to cookies and tracking mechanisms not required
+                        technically</h3>
+                    <p>When visiting our websites, you will be asked in a cookie layer whether you consent to our using
+                        of any marketing cookies or tracking mechanisms, respectively.</p>
+                    <p>In our privacy settings, you may withdraw the consent with effect for the future or grant your
+                        consent at a later point in time.</p>
+
+                    <h2 class="section-subtitle fade-in delay-4">5. Plugins</h2>
+                    <p>Our online offers include the use of plugins provided by various social and other networks.</p>
+                    <p>These plugins are additional features made available by the network providers.</p>
+                    <p>As a default setting, these plugins are inactive.</p>
+                    <p>To enhance the protection of your data when visiting our website, we use a "2-click solution" to
+                        integrate the plugins into the page. This 2-click solution keeps your visit to our websites from
+                        being recorded and possibly evaluated by the providers of the respective plugins by default.</p>
+                    <p>If you do not wish the providers of the respective networks to receive data about your use of
+                        this online offer and possibly to store or further use this data, you should not activate the
+                        respective plugins.</p>
+                    <ul>
+                        <li>Activating plugins<br>
+                            You yourself can decide whether you want to interact with the respective provider's network
+                            and whether your data is to be transmitted to the respective provider or not. Only if you
+                            click on the button provided ("Agree") will the respective plugin be activated and
+                            integrated into the page, and the content of the respective plugin be transmitted from the
+                            server of the associated provider directly to your browser. A second click will then allow
+                            you to perform the desired interaction with the network. If you decide to activate a plugin,
+                            you give us permission to process your data based on your consent.</li>
+                        <li>Collection of data by providers<br>
+                            When a plugin is activated, your internet browser establishes a direct connection to the
+                            respective provider's servers. Even if you do not have a user account with the provider or
+                            are not currently logged in to such an account, this connection notifies the respective
+                            provider that your internet browser has called up the corresponding page of our online
+                            offer. If you already have a user account with a provider of a network and are already
+                            logged in when you visit our websites, the operator of the respective network may be able to
+                            assign the visit to your personal user account as soon as you activate plugins. This may
+                            enable the provider to analyze your usage behavior and store it in a profile. In addition,
+                            your IP address and other data about your browser settings will be transmitted by your
+                            internet browser directly to a server of the respective provider and may be stored there.
+                        </li>
+                        <li>Further processing of data by providers<br>
+                            Plugins are additional features made available by network providers. We therefore have no
+                            influence on the further processing of the data that the respective network providers'
+                            plugins collect and store. To find out more about the purpose and scope of each provider's
+                            activities to collect, further process, and delete data, as well as about your respective
+                            rights and data protection options, please consult the respective provider's privacy policy.
+                        </li>
+                        <li>Deactivate the plugin<br>
+                            If you activate a plugin, the activation applies to the specific plugin only, and only for
+                            as long as you visit the page into which the plugin is integrated. If you no longer wish to
+                            use an activated plugin, it can be deactivated by reloading the website. Please note that
+                            this does not affect data that has already been transmitted.</li>
+                    </ul>
+                    <p>We use plugins from the providers listed below:</p>
+
+                    <h3>5.1 YouTube</h3>
+                    <p>This online offer uses the YouTube video platform, which is operated by Google Ireland Limited,
+                        Gordon House, Barrow Street, Dublin 4, Ireland ("YouTube"). YouTube is a platform that enables
+                        the playback of audio and video files.</p>
+                    <p>In order to enhance your data protection when visiting our website, the YouTube content is
+                        integrated into the page in "enhanced privacy mode."</p>
+                    <p>This means that the video will only be loaded and a connection to YouTube, including a
+                        transmission of log data to YouTube, only established once the corresponding plugin has been
+                        activated. If the plugin is activated, data will also be transmitted to YouTube and the Google
+                        DoubleClick advertising network contacted. This may trigger further data processing operations
+                        over which we have no control. If the YouTube video is loaded, cookies are also used.</p>
+                    <p>To find out more about the scope and purpose of YouTube's activities to collect, further process,
+                        and use data, about possible transfers of personal data to third countries such as the United
+                        States, about your rights and the data protection options available to you, please consult
+                        YouTube's privacy policy.</p>
+
+                    <h3>5.2 Google Maps</h3>
+                    <p>This online offer uses the map service Google Maps, which is operated by Google Ireland Limited,
+                        Gordon House, Barrow Street, Dublin 4, Ireland ("Google Maps").</p>
+                    <p>In order to enhance your data protection when visiting our website, the Google Maps content is
+                        integrated into the page in "enhanced privacy mode."</p>
+                    <p>This means that the map will only be loaded and a connection to Google Maps, including a
+                        transmission of log data to Google Maps, only established once the corresponding plugin has been
+                        activated. If the plugin is activated, data will be transmitted to Google and the Google
+                        DoubleClick advertising network contacted. This may trigger further data processing operations
+                        over which we have no control. If the map is loaded, cookies are also used.</p>
+                    <p>To find out more about the scope and purpose of Google Maps' activities to collect, further
+                        process, and use data, about possible transfers of personal data to third countries such as the
+                        United States, about your rights and the data protection options available to you, please
+                        consult Google's privacy policy.</p>
+
+                    <h2 class="section-subtitle fade-in delay-4">6. Content Delivery Network of Microsoft Azure</h2>
+                    <p>In order to optimize the loading times of our online offer, we use Azure Content Delivery Network
+                        (CDN) Services. Providers are Microsoft Corporation, One Microsoft Way, Redmond, WA 98052-6399,
+                        USA and Microsoft Ireland Operations Limited, One Microsoft Place, South County Business Park,
+                        Leopardstown, Dublin 18 D18, Ireland.</p>
+                    <p>The CDN helps to provide the content of our online offer — especially large media files such as
+                        graphics, text, or scripts — more quickly with the help of a network of geographically
+                        distributed servers, thereby reducing loading times.</p>
+                    <p>The use of the CDN services is based on our overriding legitimate interest within the meaning of
+                        article 8 section 1 lit. f GDPR in the efficient provision of our online offer.</p>
+                    <p>In context of this processing, personal data is transmitted to the USA. The transmission is based
+                        on European Standard Contractual Clauses in which Microsoft guarantees to comply with the
+                        European data protection law for its provided services.</p>
+                    <p>Further information on privacy in connection with Microsoft's CDN service is available here:
+                        https://azure.microsoft.com/en-us/support/legal/. Microsoft's privacy policy can be found here:
+                        https://privacy.microsoft.com/en-us/privacystatement.</p>
+
+                    <h2 class="section-subtitle fade-in delay-4">7. External Links</h2>
+                    <p>Our online offers may contain links to internet pages of third parties, in particular providers
+                        who are not related to us. Upon clicking on the link, we have no influence on the collecting,
+                        processing, and use of personal data possibly transmitted by clicking on the link to the third
+                        party (such as the IP address or the URL of the site on which the link is located) as the
+                        conduct of third parties is naturally beyond our control. We do not assume responsibility for
+                        the processing of personal data by third parties.</p>
+
+                    <h2 class="section-subtitle fade-in delay-4">8. Security</h2>
+                    <p>Our employees and the companies providing services on our behalf, are obliged to confidentiality
+                        and to compliance with the applicable data protection laws. We take all necessary technical and
+                        organizational measures to ensure an appropriate level of security and to protect your data that
+                        are administrated by us especially from the risks of unintended or unlawful destruction,
+                        manipulation, loss, change, or unauthorized disclosure or unauthorized access. Our security
+                        measures are, pursuant to technological progress, constantly being improved.</p>
+
+                    <h2 class="section-subtitle fade-in delay-4">9. User rights</h2>
+                    <p>To enforce your rights, please use the details provided in the "Contact" section (see no. 11). In
+                        doing so, please ensure that an unambiguous identification of your person is possible.</p>
+
+                    <h3>9.1 - Right to information and access</h3>
+                    <p>You have the right to obtain confirmation from us about whether or not your personal data is
+                        being processed, and, if this is the case, access to your personal data.</p>
+
+                    <h3>9.2 - Right to correction and deletion</h3>
+                    <p>You have the right to obtain the rectification of inaccurate personal data. As far as statutory
+                        requirements are fulfilled, you have the right to obtain the completion or deletion of your
+                        data.</p>
+                    <p>This does not apply to data which is necessary for billing or accounting purposes or which is
+                        subject to a statutory retention period. If access to such data is not required, however, its
+                        processing is restricted (see the following).</p>
+
+                    <h3>9.3 - Restriction of processing</h3>
+                    <p>As far as statutory requirements are fulfilled you have the right to demand for restriction of
+                        the processing of your data.</p>
+
+                    <h3>9.4 - Data portability</h3>
+                    <p>As far as statutory requirements are fulfilled you may request to receive data that you have
+                        provided to us in a structured, commonly used and machine-readable format or – if technically
+                        feasible – that we transfer those data to a third party.</p>
+
+                    <h3>9.5 - Right of objection</h3>
+                    <h4>9.5.1 - Objection to direct marketing</h4>
+                    <p>Additionally, you may object to the processing of your personal data for direct marketing
+                        purposes at any time. Please take into account that due to organizational reasons, there might
+                        be an overlap between your objection and the usage of your data within the scope of a campaign
+                        which is already running.</p>
+
+                    <h4>9.5.2 - Objection to data processing based on the legal basis of "legitimate interest"</h4>
+                    <p>In addition, you have the right to object to the processing of your personal data at any time,
+                        insofar as this is based on "legitimate interest". We will then terminate the processing of your
+                        data, unless we demonstrate compelling legitimate grounds according to legal requirements which
+                        override your rights.</p>
+
+                    <h3>9.6 - Withdrawal of consent</h3>
+                    <p>In case you consented to the processing of your data, you have the right to revoke this consent
+                        at any time with effect for the future. The lawfulness of data processing prior to your
+                        withdrawal remains unchanged.</p>
+
+                    <h3>9.7 - Right to lodge complaint with supervisory authority</h3>
+                    <p>You have the right to lodge a complaint with a supervisory authority. You can appeal to the
+                        supervisory authority which is responsible for your place of residence or your state of
+                        residency or to the supervisory authority responsible for us. This is:</p>
+                    <p>State Commissioner for Data Protection and Freedom of Information</p>
+                    <p>Address:</p>
+                    <p>Lautenschlagerstraße 20<br>
+                        70173 Stuttgart<br>
+                        GERMANY</p>
+                    <p>Postal address:</p>
+                    <p>Postfach 10 29 32<br>
+                        70025 Stuttgart<br>
+                        GERMANY</p>
+                    <p>Telephone: +49 711 6155 41-0<br>
+                        Fax: +49 711 6155 41-15<br>
+                        e-mail to: poststelle@lfdi.bwl.de</p>
+
+                    <h2 class="section-subtitle fade-in delay-4">10. Change of the data protection notice</h2>
+                    <p>We reserve the right to change our security and data protection measures. In such cases, we will
+                        amend our data protection notice accordingly. Please, therefore, notice the current version of
+                        our data protection notice, as this is subject to changes.</p>
+
+                    <h2 class="section-subtitle fade-in delay-4">11. Contact</h2>
+                    <p>If you wish to contact us, please find us at the address stated in the "Controller" section (see
+                        no. 2).</p>
+                    <p>To assert your rights please use the following link: <a
+                            href="https://request.privacy-bosch.com/entity/RB"
+                            target="_blank">https://request.privacy-bosch.com/entity/RB</a>.</p>
+                    <p>To notify data protection incidents please use the following link: <a
+                            href="https://www.bkms-system.net/bosch-dataprotection"
+                            target="_blank">https://www.bkms-system.net/bosch-dataprotection</a>.</p>
+                    <p>For suggestions and complaints regarding the processing of your personal data we recommend that
+                        you contact our data protection officer:</p>
+                    <address>
+                        Data Protection Officer<br>
+                        Information Security and Privacy (C/ISP)<br>
+                        Robert Bosch GmbH<br>
+                        Postfach 30 02 20<br>
+                        70442 Stuttgart<br>
+                        GERMANY
+                    </address>
+                    <p>or</p>
+                    <p>e-mail to: <a href="mailto:DPO@bosch.com">DPO@bosch.com</a></p>
+                </div>
+            </div>
+        </div>
+        <!-- About Links Section -->
+        <div class="about-links-container fade-in delay-3">
+            <div class="about-link-box">
+                <a href="call-for-papers.html">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Call for Papers</span>
+                </a>
+            </div>
+            <div class="about-link-box">
+                <a href="code-of-conduct.html">
+                    <i class="fas fa-users"></i>
+                    <span>Code of Conduct</span>
+                </a>
+            </div>
+            <div class="about-link-box">
+                <a href="corporate-info.html">
+                    <i class="fas fa-building"></i>
+                    <span>Corporate Info</span>
+                </a>
+            </div>
+            <div class="about-link-box">
+                <a href="data-protection-notice.html">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Data Protection</span>
+                </a>
+            </div>
+            <div class="about-link-box">
+                <a href="legal-notice.html">
+                    <i class="fas fa-gavel"></i>
+                    <span>Legal Notice</span>
+                </a>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="RustTechX-Summit2025-logo.png" alt="RustTechX Logo">
+
+                </div>
+                <p>Annual Rust Conference organized by Bosch Global Software Technologies, where Rust enthusiasts
+                    converge to explore innovative ideas.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="agenda.html">Agenda</a></li>
+                    <li><a href="keynotes.html">Keynotes</a></li>
+                    <li><a href="speakers.html">Speakers</a></li>
+                    <li><a href="venue.html">Venue</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Bosch Koramangala, Building 905, Room 230</p>
+                <p><i class="fas fa-envelope"></i> contact@rusttechx.com</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright &copy; 2025 Bosch Global Software Technologies Private Limited, all rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll Animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        function checkScroll() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+
+        // Ensure page loads at top
+        window.addEventListener('load', function () {
+            window.scrollTo(0, 0);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RustTechX Summit 2025 | One Minute Madness Recording</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --electric-blue: #2B59C3;
+            --soft-blue: #A7C6ED;
+            --rust-orange: #E76F51;
+            --peach: #F4A261;
+            --lime-green: #70EE9C;
+            --lavender: #E2CFEA;
+            --off-white: #F8F9FA;
+            --light-gray: #DEE2E6;
+            --dark-gray: #495057;
+            --pastel-pink: #FFD6E0;
+            --pastel-purple: #C3B1E1;
+            --pastel-blue: #AFCBFF;
+            --pastel-yellow: #FFF2CC;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--off-white);
+            color: var(--dark-gray);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(248, 249, 250, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 1rem 5%;
+            background-color: rgba(248, 249, 250, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 50px;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled .logo img {
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--electric-blue);
+        }
+
+        .logo-text span {
+            color: var(--rust-orange);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--electric-blue);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--electric-blue);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .register-btn {
+            background-color: var(--rust-orange);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .register-btn:hover {
+            background-color: var(--peach);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(231, 111, 81, 0.3);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Coming Soon Section */
+        .coming-soon-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 8rem 5% 4rem;
+            text-align: center;
+        }
+
+        .coming-soon-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .coming-soon-icon {
+            font-size: 5rem;
+            color: var(--rust-orange);
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .coming-soon-title {
+            font-size: 2.5rem;
+            color: var(--electric-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .coming-soon-text {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--dark-gray);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--electric-blue);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background-color: var(--rust-orange);
+            transform: translateY(-3px);
+        }
+        footer {
+            background-color: var(--dark-gray);
+            color: white;
+            padding: 5rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo img {
+            height: 40px;
+        }
+
+        .footer-logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .footer-logo-text span {
+            color: var(--rust-orange);
+        }
+
+        .footer-about p {
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--rust-orange);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--rust-orange);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links ul li a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--lime-green);
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-contact i {
+            color: var(--rust-orange);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+         @media (max-width: 1024px) {
+            .keynote-detail-container {
+                padding: 2.5rem;
+            }
+            
+            .keynote-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--off-white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 3rem;
+                transition: all 0.5s ease;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+
+            .hamburger .line {
+                width: 30px;
+                height: 3px;
+                background-color: var(--dark-gray);
+                margin: 5px;
+                transition: all 0.3s ease;
+            }
+
+            .hamburger.active .line:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .hamburger.active .line:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .line:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            .keynote-detail-section {
+                padding: 7rem 5% 3rem;
+            }
+
+            .keynote-detail-container {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .keynote-title {
+                font-size: 1.8rem;
+            }
+
+            .keynote-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .keynote-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .keynote-content p {
+                font-size: 1rem;
+            }
+
+            .keynote-detail-container {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Text Alignment */
+        body, p, h1, h2, h3, h4, h5, h6, div, section, article {
+            text-align: left;
+        }
+
+        .copyright, .footer-logo, .footer-logo-text {
+            text-align: center;
+        }
+
+        .footer-content > div {
+            text-align: left;
+        }
+
+        @media (max-width: 480px) {
+            .footer-about, .footer-contact {
+                text-align: center;
+            }
+            .footer-links {
+                text-align: center;
+            }
+            .footer-links ul {
+                display: inline-block;
+                text-align: left;
+                padding-left: 1.5rem;
+            }
+            .footer-contact p {
+                justify-content: center;
+            }
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        /* Footer and other styles remain the same as before */
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="logo">
+            <a href="home.html" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="RustTechX-Summit2025-logo.png" alt="RustTechX Summit 2025 Logo">
+            </a>
+        </div>
+        
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="agenda.html">Agenda</a></li>
+                <li><a href="keynotes.html">Keynotes</a></li>
+                <li><a href="speakers.html">Speakers</a></li>
+                <li><a href="venue.html">Venue</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="register.html" class="register-btn">Register</a></li>
+            </ul>
+        </nav>
+        
+        <div class="hamburger" id="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </header>
+
+    <!-- Coming Soon Section -->
+    <section class="coming-soon-section">
+        <div class="coming-soon-content">
+            <div class="coming-soon-icon">
+                <i class="fas fa-hourglass-half"></i>
+            </div>
+            <h1 class="coming-soon-title">Coming Soon</h1>
+            <p class="coming-soon-text">The recording for "One Minute Madness" will be available shortly. Please check back later.</p>
+            <a href="keynotes.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Keynote
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="RustTechX-Summit2025-logo.png" alt="RustTechX Logo">
+                </div>
+                <p>Annual Rust Conference organized by Bosch Global Software Technologies, where Rust enthusiasts
+                    converge to explore innovative ideas.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="agenda.html">Agenda</a></li>
+                    <li><a href="keynotes.html">Keynotes</a></li>
+                    <li><a href="speakers.html">Speakers</a></li>
+                    <li><a href="venue.html">Venue</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Bosch Koramangala, Building 905, Room 230</p>
+                <p><i class="fas fa-envelope"></i> contact@rusttechx.com</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 RustTechX Summit. All rights reserved.</p>
+        </div>
+    </footer>
+    <!-- JavaScript -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Ensure page loads at top
+        window.addEventListener('load', function() {
+            window.scrollTo(0, 0);
+        });
+    </script>
+</body>
+</html>

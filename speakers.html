@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RustTechX Summit 2025 | Speakers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --electric-blue: #2B59C3;
+            --soft-blue: #A7C6ED;
+            --rust-orange: #E76F51;
+            --peach: #F4A261;
+            --lime-green: #70EE9C;
+            --lavender: #E2CFEA;
+            --off-white: #F8F9FA;
+            --light-gray: #DEE2E6;
+            --dark-gray: #495057;
+            --pastel-pink: #FFD6E0;
+            --pastel-purple: #C1BAFF;
+            --pastel-green: #C1FBA4;
+            --pastel-yellow: #FFEE93;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--off-white);
+            color: var(--dark-gray);
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(248, 249, 250, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 1rem 5%;
+            background-color: rgba(248, 249, 250, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 50px;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled .logo img {
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--electric-blue);
+        }
+
+        .logo-text span {
+            color: var(--rust-orange);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--electric-blue);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--electric-blue);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .register-btn {
+            background-color: var(--rust-orange);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .register-btn:hover {
+            background-color: var(--peach);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(231, 111, 81, 0.3);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .page-hero {
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--pastel-purple) 0%, var(--lavender) 100%);
+            text-align: center;
+            justify-content: center;
+        }
+
+        .page-hero-content {
+            max-width: 800px;
+            z-index: 1;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--electric-blue);
+            line-height: 1.2;
+        }
+
+        .page-hero h1 span {
+            color: var(--rust-orange);
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Speakers Section */
+        .speakers {
+            padding: 5rem 5%;
+            background-color: var(--off-white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--electric-blue);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--electric-blue), var(--rust-orange));
+            border-radius: 2px;
+        }
+
+        .year-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+
+        .year-tab {
+            padding: 0.8rem 1.5rem;
+            background-color: var(--light-gray);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .year-tab.active {
+            background-color: var(--electric-blue);
+            color: white;
+        }
+
+        .year-tab:hover:not(.active) {
+            background-color: var(--soft-blue);
+        }
+
+        .speakers-container {
+            display: none;
+        }
+
+        .speakers-container.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .time-slot {
+            margin-bottom: 3rem;
+        }
+
+        .time-heading {
+            font-size: 1.5rem;
+            color: var(--rust-orange);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px dashed var(--soft-blue);
+        }
+
+        .speaker-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .speaker-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .speaker-photo-container {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .speaker-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .speaker-details {
+            text-align: left;
+        }
+
+        .speaker-title {
+            font-size: 18px;
+            margin: 0 0 5px 0;
+            color: #333;
+        }
+
+        .speaker-name-company {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .company {
+            font-weight: 600;
+            color: #444;
+        }
+
+        .speaker-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 13px;
+            border-top: 1px solid #eee;
+            padding-top: 12px;
+        }
+
+        .speaker-time,
+        .speaker-room {
+            display: flex;
+            align-items: center;
+        }
+
+        .speaker-time i,
+        .speaker-room i {
+            margin-right: 5px;
+            color: #888;
+        }
+
+        /* Footer - Same as home page */
+        footer {
+            background-color: var(--dark-gray);
+            color: white;
+            padding: 5rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo img {
+            height: 40px;
+        }
+
+        .footer-logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .footer-logo-text span {
+            color: var(--rust-orange);
+        }
+
+        .footer-about p {
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--rust-orange);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--rust-orange);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links ul li a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--lime-green);
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-contact i {
+            color: var(--rust-orange);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--off-white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 3rem;
+                transition: all 0.5s ease;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+
+            .hamburger .line {
+                width: 30px;
+                height: 3px;
+                background-color: var(--dark-gray);
+                margin: 5px;
+                transition: all 0.3s ease;
+            }
+
+            .hamburger.active .line:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .hamburger.active .line:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .line:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            .page-hero {
+                height: 40vh;
+                margin-top: 70px;
+            }
+
+            .page-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-hero {
+                height: 50vh;
+            }
+
+            .page-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .page-hero p {
+                font-size: 1rem;
+            }
+
+            .year-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .year-tab {
+                width: 100%;
+                text-align: center;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .time-heading {
+                font-size: 1.3rem;
+            }
+
+            .speaker-title {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="logo">
+            <a href="home.html" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="RustTechX-Summit2025-logo.png" alt="RustTechX Summit 2025 Logo">
+            </a>
+        </div>
+
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="agenda.html">Agenda</a></li>
+                <li><a href="keynotes.html">Keynotes</a></li>
+                <li><a href="speakers.html" class="active">Speakers</a></li>
+                <li><a href="venue.html">Venue</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="register.html" class="register-btn">Register</a></li>
+            </ul>
+        </nav>
+
+        <div class="hamburger" id="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="page-hero" id="home">
+        <div class="page-hero-content fade-in">
+            <h1>Our <span>Speakers</span></h1>
+            <p>Meet the brilliant minds sharing their expertise at RustTechX Summit 2025</p>
+        </div>
+    </section>
+
+    <!-- Speakers Section -->
+    <section class="speakers" id="speakers">
+        <h2 class="section-title fade-in">Featured Speakers</h2>
+
+        <div class="year-tabs fade-in">
+            <div class="year-tab active" data-year="2025">This Year (2025)</div>
+            <div class="year-tab" data-year="2024">Last Year (2024)</div>
+        </div>
+
+        <!-- 2025 Speakers -->
+        <div class="speakers-container active" id="speakers-2025">
+            <div class="time-slot fade-in">
+                <h3 class="time-heading">03:30 PM - 04:00 PM IST</h3>
+
+                <div class="speaker-card">
+                    <div class="speaker-info">
+                        <div class="speaker-photo-container">
+                            <img src="images/yashwanth.png" alt="Yashwanth M Singh" class="speaker-photo">
+                        </div>
+                        <div class="speaker-details">
+                            <h4 class="speaker-title">RustTechX Summit Kickoff - Keynote & Introduction</h4>
+                            <p class="speaker-name-company">Yashwanth M Singh | <span class="company">Bosch</span></p>
+                        </div>
+                    </div>
+                    <div class="speaker-meta">
+                        <div class="speaker-time">
+                            <i class="fas fa-clock"></i>
+                            <span>03:30 PM - 04:00 PM IST</span>
+                        </div>
+                        <div class="speaker-room">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Room: 230</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2024 Speakers -->
+        <div class="speakers-container" id="speakers-2024">
+            <div class="time-slot fade-in">
+                <h3 class="time-heading">03:30 PM - 04:00 PM IST</h3>
+
+                <div class="speaker-card">
+                    <div class="speaker-info">
+                        <div class="speaker-photo-container">
+                            <img src="images/yashwanth.png" alt="Speaker Name" class="speaker-photo">
+                        </div>
+                        <div class="speaker-details">
+                            <h4 class="speaker-title">RustTeclx Summit Kickoff - Keynote & Introduction</h4>
+                            <p class="speaker-name-company">Yashwanth M Singh | <span class="company">Bosch</span></p>
+                        </div>
+                    </div>
+                    <div class="speaker-meta">
+                        <div class="speaker-time">
+                            <i class="fas fa-clock"></i>
+                            <span>05:30 PM - 04:00 PM IST</span>
+                        </div>
+                        <div class="speaker-room">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Room: 230</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="speaker-card">
+                    <div class="speaker-info">
+                        <div class="speaker-photo-container">
+                            <img src="images/uday.png" alt="Speaker Name" class="speaker-photo">
+                        </div>
+                        <div class="speaker-details">
+                            <h4 class="speaker-title">Innovation Led Growth</h4>
+                            <p class="speaker-name-company">Uday Prabhu | <span class="company">Bosch Global Software
+                                    Technologies </span></p>
+                        </div>
+                    </div>
+                    <div class="speaker-meta">
+                        <div class="speaker-time">
+                            <i class="fas fa-clock"></i>
+                            <span>05:30 PM - 04:00 PM IST</span>
+                        </div>
+                        <div class="speaker-room">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Room: 230</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="speaker-card">
+                    <div class="speaker-info">
+                        <div class="speaker-photo-container">
+                            <img src="images/balaji.png" alt="Rust Remskamp" class="speaker-photo">
+                        </div>
+                        <div class="speaker-details">
+                            <h4 class="speaker-title">Tribes In Bosch</h4>
+                            <p class="speaker-name-company">Balaji Ramalingam | <span class="company">Bosch Global
+                                    Software Technologies</span></p>
+                        </div>
+                    </div>
+                    <div class="speaker-meta">
+                        <div class="speaker-time">
+                            <i class="fas fa-clock"></i>
+                            <span>05:30 PM - 04:00 PM IST</span>
+                        </div>
+                        <div class="speaker-room">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Room: 230</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="time-slot fade-in">
+                <h3 class="time-heading">04:00 PM - 04:20 PM IST</h3>
+                <div class="speaker-card">
+                    <div class="speaker-info">
+                        <div class="speaker-photo-container">
+                            <img src="images/jochen.jpg" alt="Speaker Name" class="speaker-photo">
+                        </div>
+                        <div class="speaker-details">
+                            <h4 class="speaker-title">Rust for Development of Safety-Relevant Software</h4>
+                            <p class="speaker-name-company">Quante Jochen | <span class="company">BOSCH Research</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="speaker-meta">
+                        <div class="speaker-time">
+                            <i class="fas fa-clock"></i>
+                            <span>04:00 PM - 04:20 PM IST</span>
+                        </div>
+                        <div class="speaker-room">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Room: 230</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="time-slot fade-in">
+                <h3 class="time-heading">04:20 PM - 04:40 PM IST</h3>
+                <div class="speaker-card">
+                    <div class="speaker-info">
+                        <div class="speaker-photo-container">
+                            <img src="images/nihal.png" alt="Nihal Pasham" class="speaker-photo">
+                        </div>
+                        <div class="speaker-details">
+                            <h4 class="speaker-title">Cranelift - The All-Rust Codegen Alternative to LLVM (No C/C++)
+                            </h4>
+                            <p class="speaker-name-company">Nihal Pasham | <span class="company">Bosch Global Software
+                                    Technologies</span></p>
+                        </div>
+                    </div>
+                    <div class="speaker-meta">
+                        <div class="speaker-time">
+                            <i class="fas fa-clock"></i>
+                            <span>04:20 PM - 04:40 PM IST</span>
+                        </div>
+                        <div class="speaker-room">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Room: 230</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="time-slot fade-in">
+                <h3 class="time-heading">04:40 PM - 05:00 PM IST</h3>
+                <div class="speaker-card">
+                    <div class="speaker-info">
+                        <div class="speaker-photo-container">
+                            <img src="images/anand.png" alt="Anand Gedam" class="speaker-photo">
+                        </div>
+                        <div class="speaker-details">
+                            <h4 class="speaker-title">Rust for Automotive - Targeting Infineon Tricore Aurix
+                                Microcontroller for Classic AUTOSAR</h4>
+                            <p class="speaker-name-company">Anand Gedam | <span class="company">Bosch Global Software
+                                    Technologies</span></p>
+                        </div>
+                    </div>
+                    <div class="speaker-meta">
+                        <div class="speaker-time">
+                            <i class="fas fa-clock"></i>
+                            <span>04:40 PM - 05:00 PM IST</span>
+                        </div>
+                        <div class="speaker-room">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Room: 230</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="time-slot fade-in">
+                <h3 class="time-heading">05:30 PM - 05:50 PM IST</h3>
+                <div class="speaker-card">
+                    <div class="speaker-info">
+                        <div class="speaker-photo-container">
+                            <img src="images/ganesh.jpg" alt="Speaker Name" class="speaker-photo">
+                        </div>
+                        <div class="speaker-details">
+                            <h4 class="speaker-title">Building a High-Performance, Resource-Efficient Translation
+                                Service with Rust Microservices</h4>
+                            <p class="speaker-name-company">Ganeshamurthi Ramasamy | <span class="company">Bosch Global
+                                    Software Technologies</span></p>
+                        </div>
+                    </div>
+                    <div class="speaker-meta">
+                        <div class="speaker-time">
+                            <i class="fas fa-clock"></i>
+                            <span>05:30 PM - 05:50 PM IST</span>
+                        </div>
+                        <div class="speaker-room">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Room: 230</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="time-slot fade-in">
+                <h3 class="time-heading">05:50 PM - 06:10 PM IST</h3>
+                <div class="speaker-card">
+                    <div class="speaker-info">
+                        <div class="speaker-photo-container">
+                            <img src="images/hossein.jpg" alt="Hossein Karimi Arjomand" class="speaker-photo">
+                        </div>
+                        <div class="speaker-details">
+                            <h4 class="speaker-title">Rust Application for Beverage Dispenser Control</h4>
+                            <p class="speaker-name-company">Hossein Karimi Arjomand | <span class="company">PRODYNASE</span></p>
+                        </div>
+                    </div>
+                    <div class="speaker-meta">
+                        <div class="speaker-time">
+                            <i class="fas fa-clock"></i>
+                            <span>05:50 PM - 06:10 PM IST</span>
+                        </div>
+                        <div class="speaker-room">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Room: 230</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="time-slot fade-in">
+                <h3 class="time-heading">06:10 PM - 06:30 PM IST</h3>
+                <div class="speaker-card">
+                    <div class="speaker-info">
+                        <div class="speaker-photo-container">
+                            <img src="images/sanchayan.jpg" alt="Sanchayan Maity" class="speaker-photo">
+                        </div>
+                        <div class="speaker-details">
+                            <h4 class="speaker-title">Multimedia using Rust and GStreamer</h4>
+                            <p class="speaker-name-company">Sanchayan Maity | <span class="company">asymptotic.io</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="speaker-meta">
+                        <div class="speaker-time">
+                            <i class="fas fa-clock"></i>
+                            <span>06:10 PM - 06:30 PM IST</span>
+                        </div>
+                        <div class="speaker-room">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Room: 230</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="RustTechX-Summit2025-logo.png" alt="RustTechX Logo">
+                </div>
+                <p>Annual Rust Conference organized by Bosch Global Software Technologies, where Rust enthusiasts
+                    converge to explore innovative ideas.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="agenda.html">Agenda</a></li>
+                    <li><a href="keynotes.html">Keynotes</a></li>
+                    <li><a href="speakers.html">Speakers</a></li>
+                    <li><a href="venue.html">Venue</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Bosch Koramangala, Building 905, Room 230</p>
+                <p><i class="fas fa-envelope"></i> contact@rusttechx.com</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright &copy; 2025 Bosch Global Software Technologies Private Limited, all rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Year tabs functionality
+        const yearTabs = document.querySelectorAll('.year-tab');
+        const speakersContainers = document.querySelectorAll('.speakers-container');
+
+        yearTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and containers
+                yearTabs.forEach(t => t.classList.remove('active'));
+                speakersContainers.forEach(c => c.classList.remove('active'));
+
+                // Add active class to clicked tab and corresponding container
+                tab.classList.add('active');
+                const year = tab.getAttribute('data-year');
+                document.getElementById(`speakers-${year}`).classList.add('active');
+            });
+        });
+
+        // Scroll Animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        function checkScroll() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
