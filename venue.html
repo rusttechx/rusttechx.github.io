@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RustTechX Summit 2025 | Venue</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+    /* Updated pastel color palette */
+    --electric-blue: #2B59C3;
+    --soft-blue: #A7C6ED;
+    --rust-orange: #E76F51;
+    --peach: #F4A261;
+    --lime-green: #70EE9C;
+    --lavender: #E2CFEA;
+    --off-white: #F8F9FA;
+    --light-gray: #DEE2E6;
+    --dark-gray: #495057;
+    --pastel-pink: #FFD6E0;
+    --pastel-purple: #C3B1E1;
+    --pastel-blue: #AFCBFF;
+    --pastel-yellow: #FFF2CC;
+    --pastel-mint: #B5EAD7;
+    --pastel-lavender: #E6E6FA; /* New pastel lavender */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--pastel-lavender); /* Changed to soft pastel lavender */
+    color: var(--dark-gray);
+    overflow-x: hidden;
+}
+
+/* Update venue card background */
+.venue-card {
+    background: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    backdrop-filter: blur(5px); /* Adds a subtle blur effect */
+}
+
+/* Update accommodation cards */
+.accommodation-card {
+    background: rgba(255, 255, 255, 0.85); /* More transparent white */
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border-top: 5px solid var(--rust-orange);
+    backdrop-filter: blur(3px);
+}
+
+/* Update floating background elements to be more subtle */
+.bg-element {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.15; /* More subtle */
+    z-index: 0;
+}
+
+.bg-element-1 {
+    width: 300px;
+    height: 300px;
+    background-color: var(--pastel-blue);
+    top: -150px;
+    right: -150px;
+    animation: float 15s infinite ease-in-out;
+}
+
+.bg-element-2 {
+    width: 200px;
+    height: 200px;
+    background-color: var(--pastel-mint);
+    bottom: 100px;
+    left: -100px;
+    animation: float 12s infinite ease-in-out reverse;
+}
+
+.bg-element-3 {
+    width: 150px;
+    height: 150px;
+    background-color: var(--pastel-pink);
+    top: 50%;
+    right: 10%;
+    animation: float 10s infinite ease-in-out;
+}
+        
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+       
+        /* Header Styles - Same as home page */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(248, 249, 250, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 1rem 5%;
+            background-color: rgba(248, 249, 250, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 50px;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled .logo img {
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--electric-blue);
+        }
+
+        .logo-text span {
+            color: var(--rust-orange);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--electric-blue);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--electric-blue);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .register-btn {
+            background-color: var(--rust-orange);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .register-btn:hover {
+            background-color: var(--peach);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(231, 111, 81, 0.3);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Venue Section */
+        .venue-section {
+            padding: 8rem 5% 4rem;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--electric-blue);
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--rust-orange), var(--peach));
+            border-radius: 2px;
+        }
+
+        .venue-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .venue-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .venue-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(231, 111, 81, 0.1) 0%, rgba(167, 198, 237, 0.1) 100%);
+            z-index: -1;
+        }
+
+        .venue-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .venue-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--electric-blue);
+            position: relative;
+            display: inline-block;
+        }
+
+        .venue-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--rust-orange);
+            border-radius: 3px;
+        }
+
+        .venue-card p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .venue-card ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .venue-card li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .venue-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--rust-orange);
+            font-weight: bold;
+        }
+
+        .highlight-box {
+            background-color: var(--pastel-yellow);
+            border-left: 4px solid var(--rust-orange);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 2rem 0;
+        }
+
+        /* Enhanced Map Section */
+        .map-section {
+            margin: 4rem 0;
+        }
+
+        .map-container {
+            height: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(20%) contrast(110%) brightness(95%);
+            transition: filter 0.3s ease;
+        }
+
+        .map-container:hover iframe {
+            filter: grayscale(0%) contrast(100%) brightness(100%);
+        }
+
+        .map-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .map-title {
+            font-size: 1.5rem;
+            color: var(--electric-blue);
+            font-weight: 600;
+        }
+
+        .map-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .map-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            background-color: var(--electric-blue);
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .map-btn i {
+            font-size: 1rem;
+        }
+
+        .map-btn:hover {
+            background-color: var(--rust-orange);
+            transform: translateY(-2px);
+        }
+
+        .map-btn.directions {
+            background-color: var(--lime-green);
+            color: var(--dark-gray);
+        }
+
+        .map-btn.directions:hover {
+            background-color: #5fd88f;
+        }
+
+        .map-marker-info {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+
+        .marker-title {
+            font-size: 1.2rem;
+            color: var(--electric-blue);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .marker-title i {
+            color: var(--rust-orange);
+        }
+
+        .marker-address {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .marker-coords {
+            font-family: 'Fira Code', monospace;
+            color: var(--dark-gray);
+            background-color: var(--light-gray);
+            padding: 0.3rem 0.5rem;
+            border-radius: 3px;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        .accommodation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .accommodation-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .accommodation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .accommodation-card:nth-child(1) {
+            border-top: 5px solid var(--pastel-pink);
+        }
+
+        .accommodation-card:nth-child(2) {
+            border-top: 5px solid var(--pastel-blue);
+        }
+
+        .accommodation-card:nth-child(3) {
+            border-top: 5px solid var(--pastel-mint);
+        }
+
+        .accommodation-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--electric-blue);
+        }
+
+        .accommodation-card p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .accommodation-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--rust-orange);
+        }
+
+        /* Footer - Same as home page */
+        footer {
+            background-color: var(--dark-gray);
+            color: white;
+            padding: 5rem 5% 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo img {
+            height: 40px;
+        }
+
+        .footer-logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .footer-logo-text span {
+            color: var(--rust-orange);
+        }
+
+        .footer-about p {
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--rust-orange);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--rust-orange);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links ul li a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--lime-green);
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-contact i {
+            color: var(--rust-orange);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-2 {
+            transition-delay: 0.4s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.6s;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .venue-card h2 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--off-white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 3rem;
+                transition: all 0.5s ease;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+
+            .hamburger .line {
+                width: 30px;
+                height: 3px;
+                background-color: var(--dark-gray);
+                margin: 5px;
+                transition: all 0.3s ease;
+            }
+
+            .hamburger.active .line:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .hamburger.active .line:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .line:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            .accommodation-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .map-controls {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .map-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .map-btn {
+                flex: 1;
+                text-align: center;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .venue-card {
+                padding: 1.5rem;
+            }
+
+            .venue-card h2 {
+                font-size: 1.4rem;
+            }
+            
+            .venue-card p {
+                font-size: 1rem;
+            }
+
+            .map-container {
+                height: 300px;
+            }
+            
+            .map-title {
+                font-size: 1.3rem;
+            }
+        }
+        .accommodation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.accommodation-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border-top: 5px solid var(--rust-orange);
+}
+
+.accommodation-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.accommodation-card:nth-child(1) {
+    border-top-color: var(--pastel-pink);
+}
+
+.accommodation-card:nth-child(2) {
+    border-top-color: var(--pastel-blue);
+}
+
+.accommodation-card:nth-child(3) {
+    border-top-color: var(--pastel-mint);
+}
+
+.accommodation-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--electric-blue);
+}
+
+.accommodation-card p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.accommodation-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--rust-orange);
+}
+
+.accommodation-card ul {
+    margin-left: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.accommodation-card li {
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1.2rem;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+.accommodation-card li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--rust-orange);
+    font-weight: bold;
+}
+
+.accommodation-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.accommodation-links a {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.map-link {
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+}
+
+.map-link:hover {
+    background-color: var(--electric-blue);
+    color: white;
+}
+
+.book-link {
+    background-color: var(--rust-orange);
+    color: white;
+}
+
+.book-link:hover {
+    background-color: var(--peach);
+    transform: translateY(-2px);
+}
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="logo">
+            <a href="home.html" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="RustTechX-Summit2025-logo.png" alt="RustTechX Summit 2025 Logo">
+            </a>
+        </div>
+        
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="agenda.html">Agenda</a></li>
+                <li><a href="keynotes.html">Keynotes</a></li>
+                <li><a href="speakers.html">Speakers</a></li>
+                <li><a href="venue.html">Venue</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="register.html" class="register-btn">Register</a></li>
+            </ul>
+        </nav>
+        
+        <div class="hamburger" id="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </header>
+
+    <!-- Venue Section -->
+    <section class="venue-section" id="venue">
+        <div class="bg-element bg-element-1"></div>
+        <div class="bg-element bg-element-2"></div>
+        <div class="bg-element bg-element-3"></div>
+        
+        <h2 class="section-title fade-in">Venue</h2>
+        
+        <div class="venue-container">
+            <div class="venue-card fade-in">
+                <h2>The RustTechX Summit 2025</h2>
+                <p>The RustTechX Summit 2025 will take place on the Bosch Koramangala Campus in Building 905, Room 230 Seminar Hall.</p>
+                
+                <!-- Enhanced Map Section -->
+                <div class="map-section fade-in delay-2">
+                    <div class="map-controls">
+                        <h3 class="map-title">Venue Location</h3>
+                        <div class="map-actions">
+                            <a href="https://www.google.com/maps/dir//Bosch+Global+Software+Technologies+Pvt+Ltd,+123,+Hexur+Rd,+7th+Block,+Koramangala,+Bengaluru,+Karnataka+560095" 
+                               target="_blank" 
+                               class="map-btn directions">
+                                <i class="fas fa-route"></i> Get Directions
+                            </a>
+                            <a href="https://www.google.com/maps/place/Bosch+Global+Software+Technologies+Pvt+Ltd/@12.9351767,77.6240613,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae144e8967f4a9:0x2a9aa8b8a0a3d3a1!8m2!3d12.9351767!4d77.6266362!16s%2Fg%2F11b8f6x6q4" 
+                               target="_blank" 
+                               class="map-btn">
+                                <i class="fas fa-external-link-alt"></i> Open in Maps
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.1234567890123!2d77.12345678901234!3d12.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDA3JzI0LjQiTiA3N8KwMDcnMjQuNCJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    
+                    <div class="map-marker-info">
+                        <h4 class="marker-title"><i class="fas fa-map-marker-alt"></i> Bosch Global Software Technologies</h4>
+                        <p class="marker-address">123, Hexur Rd, 7th Block, Koramangala, Bengaluru, Karnataka 560095, India</p>
+                        <span class="marker-coords">12.9352° N, 77.6266° E</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="venue-card fade-in delay-1">
+                <h2>How to Reach</h2>
+                <ul>
+                    <li><strong>Nearest Metro Station:</strong> Lalbhag on the Green Line – approx. 5.8 km away.</li>
+                    <li><strong>Nearest Bus stop:</strong> Adugodi Bus Stop – Served by buses: 70, 171, 362-C, 362CA, and MLO-VSD-KKS</li>
+                    <li><strong>Cab/Ola Drop Address:</strong> Search and enter "<strong>Bosch Global Software Technologies Pvt Ltd, Koramangala, Bengaluru</strong>".</li>
+                    <li><strong>Distance from Kempegowda International Airport (BLR):</strong> ~42 km (Approx. 1 to 1.5 hours by cab depending on traffic).</li>
+                </ul>
+            </div>
+            
+            <div class="venue-card fade-in delay-2">
+                <h2>Recommended Accommodations</h2>
+                <p>Here are three excellent accommodation options near the venue:</p>
+                
+                <div class="accommodation-grid">
+                    <!-- The Ritz-Carlton, Bangalore -->
+                    <div class="accommodation-card">
+                        <div class="accommodation-icon">
+                            <i class="fas fa-hotel"></i>
+                        </div>
+                        <h3>The Ritz-Carlton, Bangalore</h3>
+                        <p><strong>₹15,000+</strong> – 4.7 ⭐ (Luxury 5-star hotel)</p>
+                        <ul>
+                            <li>Outdoor swimming pool</li>
+                            <li>Spa and wellness center</li>
+                            <li>5 restaurants and bars</li>
+                            <li>24-hour fitness center</li>
+                            <li>Free WiFi</li>
+                            <li>24-hour room service</li>
+                        </ul>
+                        <p><strong>Distance:</strong> 3.5 km from venue</p>
+                        <div class="accommodation-links">
+                            <a href="https://www.google.com/maps/place/The+Ritz-Carlton,+Bangalore/@12.9633433,77.6111881,17z/data=!3m1!4b1!4m9!3m8!1s0x3bae15c49c040309:0x6553433f72187bdb!5m2!4m1!1i2!8m2!3d12.9633433!4d77.613763" target="_blank" class="map-link">View on Map</a>
+                            <a href="https://www.booking.com/Share-b5YZ2wG" target="_blank" class="book-link">Book Now</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Taj MG Road, Bangalore -->
+                    <div class="accommodation-card">
+                        <div class="accommodation-icon">
+                            <i class="fas fa-laptop-house"></i>
+                        </div>
+                        <h3>Taj MG Road, Bangalore</h3>
+                        <p><strong>₹10,000+</strong> – 4.6 ⭐ (Luxury 5-star hotel)</p>
+                        <ul>
+                            <li>Outdoor swimming pool</li>
+                            <li>24-hour fitness center</li>
+                            <li>Multiple dining options</li>
+                            <li>Spa and wellness center</li>
+                            <li>Business center</li>
+                            <li>Concierge service</li>
+                        </ul>
+                        <p><strong>Distance:</strong> 4.2 km from venue</p>
+                        <div class="accommodation-links">
+                            <a href="https://www.google.com/maps/place/Taj+MG+Road+Bengaluru/@12.974983,77.6107504,17z/data=!3m1!4b1!4m9!3m8!1s0x3bae16610a3a2d4b:0x3f5e6d5e6d5e6d5e!5m2!4m1!1i2!8m2!3d12.974983!4d77.6133253" target="_blank" class="map-link">View on Map</a>
+                            <a href="https://www.booking.com/Share-Y1TJADf" target="_blank" class="book-link">Book Now</a>
+                        </div>
+                    </div>
+                    
+                    <!-- The Park Bangalore -->
+                    <div class="accommodation-card">
+                        <div class="accommodation-icon">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <h3>The Park Bangalore</h3>
+                        <p><strong>₹7,500+</strong> – 4.4 ⭐ (5-star hotel in Koramangala)</p>
+                        <ul>
+                            <li>Outdoor swimming pool</li>
+                            <li>Fitness center</li>
+                            <li>Restaurant and bar</li>
+                            <li>Spa services</li>
+                            <li>24-hour front desk</li>
+                            <li>Business facilities</li>
+                        </ul>
+                        <p><strong>Distance:</strong> 1.2 km from venue</p>
+                        <div class="accommodation-links">
+                            <a href="https://www.google.com/maps/place/The+Park+Bangalore/@12.9351767,77.6240613,17z/data=!3m1!4b1!4m9!3m8!1s0x3bae144e8967f4a9:0x2a9aa8b8a0a3d3a1!5m2!4m1!1i2!8m2!3d12.9351767!4d77.6266362!16s%2Fg%2F11b8f6x6q4" target="_blank" class="map-link">View on Map</a>
+                            <a href="https://www.makemytrip.com/hotels/hotel-details/?hotelId=201205191532258041&_uCurrency=INR&cc=IN&checkin=08032025&checkout=08042025&city=CTBLR&country=IN&filterData=STAR_RATING%7C4&guid=8b805474-cdf9-4815-bd42-36dec18cf12d&isPWA=true&locusId=CTBLR&locusType=city&mmAreaTag=Koramangala%7CARKORA&modifyDates=true&parentHostName=www.makemytrip.com&rank=1&roomStayQualifier=2e0e&searchText=Koramangala%2C%20Bangalore&seoDS=true&seoReq=1751203996307&mtkeys=undefined" target="_blank" class="book-link">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="RustTechX-Summit2025-logo.png" alt="RustTechX Logo">
+                </div>
+                <p>Annual Rust Conference organized by Bosch Global Software Technologies, where Rust enthusiasts
+                    converge to explore innovative ideas.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="agenda.html">Agenda</a></li>
+                    <li><a href="keynotes.html">Keynotes</a></li>
+                    <li><a href="speakers.html">Speakers</a></li>
+                    <li><a href="venue.html">Venue</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Bosch Koramangala, Building 905, Room 230</p>
+                <p><i class="fas fa-envelope"></i> contact@rusttechx.com</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 RustTechX Summit. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll Animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        function checkScroll() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Ensure page loads at top
+        window.addEventListener('load', function() {
+            window.scrollTo(0, 0);
+        });
+    </script>
+</body>
+</html>

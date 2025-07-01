@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RustTechX Summit 2025 | Keynotes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --electric-blue: #2B59C3;
+            --soft-blue: #A7C6ED;
+            --rust-orange: #E76F51;
+            --peach: #F4A261;
+            --lime-green: #70EE9C;
+            --lavender: #E2CFEA;
+            --off-white: #F8F9FA;
+            --light-gray: #DEE2E6;
+            --dark-gray: #495057;
+            --pastel-pink: #FFD6E0;
+            --pastel-purple: #C3B1E1;
+            --pastel-blue: #AFCBFF;
+            --pastel-yellow: #FFF2CC;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--off-white);
+            color: var(--dark-gray);
+            overflow-x: hidden;
+        }
+
+        /* Header Styles - Same as home page */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(248, 249, 250, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 1rem 5%;
+            background-color: rgba(248, 249, 250, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 50px;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled .logo img {
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--electric-blue);
+        }
+
+        .logo-text span {
+            color: var(--rust-orange);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--electric-blue);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--electric-blue);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .register-btn {
+            background-color: var(--rust-orange);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .register-btn:hover {
+            background-color: var(--peach);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(231, 111, 81, 0.3);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Keynotes Section */
+        .keynotes-section {
+            padding: 8rem 5%;
+            background: linear-gradient(135deg, var(--pastel-yellow) 0%, var(--lavender) 100%);
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--electric-blue);
+        }
+
+        .keynotes-intro {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .keynotes-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .keynote-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .keynote-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .keynote-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .keynote-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--rust-orange);
+        }
+
+        .keynote-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--electric-blue);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .keynote-card h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--rust-orange);
+        }
+
+        .keynote-card p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .keynote-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .keynote-speaker {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            color: var(--rust-orange);
+        }
+
+        .keynote-time {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--electric-blue);
+        }
+
+        .keynote-room {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--dark-gray);
+        }
+
+        .keynote-icon {
+            position: absolute;
+            right: 1.5rem;
+            top: 1.5rem;
+            font-size: 2rem;
+            color: rgba(231, 111, 81, 0.1);
+            z-index: 0;
+        }
+
+        /* Different colors for different keynote cards */
+        .keynote-card:nth-child(1) {
+            border-left: 5px solid var(--electric-blue);
+        }
+
+        .keynote-card:nth-child(2) {
+            border-left: 5px solid var(--lime-green);
+        }
+
+        .keynote-card:nth-child(3) {
+            border-left: 5px solid var(--pastel-purple);
+        }
+
+        .keynote-card:nth-child(4) {
+            border-left: 5px solid var(--pastel-pink);
+        }
+
+        .keynote-card:nth-child(5) {
+            border-left: 5px solid var(--lavender);
+        }
+
+        .keynote-card:nth-child(6) {
+            border-left: 5px solid var(--peach);
+        }
+
+        .keynote-card:nth-child(7) {
+            border-left: 5px solid var(--pastel-blue);
+        }
+
+        /* Market Place Special Card */
+
+
+
+
+
+
+
+
+
+
+        /* Footer - Same as home page */
+        footer {
+            background-color: var(--dark-gray);
+            color: white;
+            padding: 5rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo img {
+            height: 40px;
+        }
+
+        .footer-logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .footer-logo-text span {
+            color: var(--rust-orange);
+        }
+
+        .footer-about p {
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--rust-orange);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--rust-orange);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links ul li a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--lime-green);
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-contact i {
+            color: var(--rust-orange);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .keynote-card h3 {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--off-white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 3rem;
+                transition: all 0.5s ease;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+
+            .hamburger .line {
+                width: 30px;
+                height: 3px;
+                background-color: var(--dark-gray);
+                margin: 5px;
+                transition: all 0.3s ease;
+            }
+
+            .hamburger.active .line:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .hamburger.active .line:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .line:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            .keynote-icon {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .keynotes-intro {
+                font-size: 1rem;
+            }
+
+            .keynote-card {
+                padding: 1.5rem;
+            }
+
+            .keynote-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .keynote-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        /* ===== TEXT ALIGNMENT FIXES ===== */
+        /* Base alignment for all text */
+        body,
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        div,
+        section,
+        article {
+            text-align: left;
+            /* Default to left alignment */
+        }
+
+        /* Center-aligned elements */
+        .section-title,
+        .keynotes-intro,
+        .marketplace-card,
+        .marketplace-card h2,
+        .marketplace-card p,
+        .copyright,
+        .footer-logo,
+        .footer-logo-text {
+            text-align: center !important;
+        }
+
+        /* Left-aligned containers */
+        .keynote-card,
+        .keynote-card-content,
+        .footer-content,
+        .footer-about,
+        .footer-links,
+        .footer-contact {
+            text-align: left;
+        }
+
+        /* Force left alignment for specific elements */
+        .keynote-card h3,
+        .keynote-card p,
+        .keynote-meta,
+        .footer-about p,
+        .footer-links ul,
+        .footer-contact p {
+            text-align: left !important;
+        }
+
+        /* List items alignment */
+        .footer-links ul {
+            padding-left: 1rem;
+            /* Add proper indentation */
+        }
+
+        .footer-links li {
+            text-align: left;
+            list-style-position: inside;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+
+            /* Tablet - maintain alignments */
+            .keynote-card,
+            .keynote-card h3,
+            .keynote-card p {
+                text-align: left !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            /* Small tablet - same rules */
+            .footer-content>div {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            /* Mobile specific fixes */
+            .keynote-card,
+            .keynote-card h3,
+            .keynote-card p {
+                text-align: left !important;
+            }
+
+            /* Footer mobile alignment */
+            .footer-about,
+            .footer-contact {
+                text-align: center;
+            }
+
+            .footer-links {
+                text-align: center;
+            }
+
+            .footer-links ul {
+                display: inline-block;
+                text-align: left;
+                padding-left: 1.5rem;
+            }
+
+            /* Contact items */
+            .footer-contact p {
+                justify-content: center;
+                text-align: center;
+            }
+
+            /* Social icons */
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+
+        /* Add this to your CSS */
+        .keynote-link {
+            color: var(--electric-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .keynote-link:hover {
+            color: var(--rust-orange);
+            text-decoration: underline;
+        }
+
+        /* This will ensure the speaker names and other meta info keep their colors */
+        .keynote-speaker a,
+        .keynote-time a,
+        .keynote-room a {
+            color: inherit !important;
+            text-decoration: none;
+        }
+
+        .keynote-speaker:hover a,
+        .keynote-time:hover a,
+        .keynote-room:hover a {
+            color: inherit !important;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="logo">
+            <a href="home.html" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="RustTechX-Summit2025-logo.png" alt="RustTechX Summit 2025 Logo">
+            </a>
+        </div>
+
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="agenda.html">Agenda</a></li>
+                <li><a href="keynotes.html">Keynotes</a></li>
+                <li><a href="speakers.html">Speakers</a></li>
+                <li><a href="venue.html">Venue</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="register.html" class="register-btn">Register</a></li>
+            </ul>
+        </nav>
+
+        <div class="hamburger" id="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </header>
+
+    <!-- Keynotes Section -->
+    <section class="keynotes-section" id="keynotes">
+        <h2 class="section-title fade-in">Keynote Sessions</h2>
+
+        <div class="keynotes-intro fade-in">
+            <p>All keynotes take place in the Auditorium K. Each keynote will last between 10 and 15 minutes. These
+                sessions are delivered by industry leaders, community experts, and innovators across domains, offering
+                insights into the future of open-source technologies and practical applications of Rust in real-world
+                environments.</p>
+        </div>
+
+        <div class="keynotes-container">
+            <div class="keynote-card fade-in" data-href="suse.html" style="cursor:pointer;">
+                <div class="keynote-icon">
+                    <i class="fas fa-microphone"></i>
+                </div>
+                <h3>
+                    <a href="suse.html" class="keynote-link">
+                        Better and faster results with Open Source
+                    </a>
+                </h3>
+                <p>This talk will explore how SUSE leverages open source tools and practices to drive faster and more
+                    efficient development outcomes across diverse industries.</p>
+                <div class="keynote-meta">
+                    <span class="keynote-speaker">
+                        <i class="fas fa-user"></i> Ivo Totev | SUSE
+                    </span>
+                    <span class="keynote-time">
+                        <i class="far fa-clock"></i> 10:15
+                    </span>
+                    <span class="keynote-room">
+                        <i class="fas fa-map-marker-alt"></i> Auditorium K
+                    </span>
+                </div>
+            </div>
+
+            <div class="keynote-card fade-in" data-href="linux.html" style="cursor:pointer;">
+                <div class="keynote-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3><a href="linux.html" class="keynote-link">
+                        The maturing OSS community draws European regulators' attention</h3>
+                </a>
+                <p>Gain insight into how the evolving open source ecosystem is influencing policy and regulation across
+                    Europe, with examples of community maturity and governance.</p>
+                <div class="keynote-meta">
+                    <span class="keynote-speaker">
+                        <i class="fas fa-user"></i> Mirko Boehm | Linux Foundation Europe
+                    </span>
+                    <span class="keynote-time">
+                        <i class="far fa-clock"></i> 10:30
+                    </span>
+                    <span class="keynote-room">
+                        <i class="fas fa-map-marker-alt"></i> Auditorium K
+                    </span>
+                </div>
+            </div>
+
+            <div class="keynote-card fade-in" data-href="pengutronix.html" style="cursor:pointer;">
+                <div class="keynote-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3><a href="pengutronix.html" class="keynote-link">
+                        Community Collaboration Patterns: Addressing Risk and Complexity</h3>
+                </a>
+                <p>Discover how community collaboration mitigates risks and tackles complexity in embedded Linux
+                    development through practical case studies and frameworks.</p>
+                <div class="keynote-meta">
+                    <span class="keynote-speaker">
+                        <i class="fas fa-user"></i> Jan Lübbe | Pengutronix
+                    </span>
+                    <span class="keynote-time">
+                        <i class="far fa-clock"></i> 10:45
+                    </span>
+                    <span class="keynote-room">
+                        <i class="fas fa-map-marker-alt"></i> Auditorium K
+                    </span>
+                </div>
+            </div>
+
+            <div class="keynote-card fade-in" data-href="seimens.html" style="cursor:pointer;">
+                <div class="keynote-icon">
+                    <i class="fas fa-industry"></i>
+                </div>
+                <h3><a href="seimens.html" class="keynote-link">
+                        Living Open Source at Siemens</h3>
+                </a>
+                <p>Understand Siemens' journey in embracing open source, fostering internal innovation, and engaging
+                    with global developer communities.</p>
+                <div class="keynote-meta">
+                    <span class="keynote-speaker">
+                        <i class="fas fa-user"></i> Jan Kiszka | Siemens
+                    </span>
+                    <span class="keynote-time">
+                        <i class="far fa-clock"></i> 11:00
+                    </span>
+                    <span class="keynote-room">
+                        <i class="fas fa-map-marker-alt"></i> Auditorium K
+                    </span>
+                </div>
+            </div>
+
+
+            <div class="keynote-card fade-in" data-href="minute.html" style="cursor:pointer;">
+                <div class="keynote-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3><a href="minute.html" class="keynote-link">
+                        One Minute Madness</h3>
+                </a>
+                <p>A fast-paced showcase where each exhibitor gets one minute to present their solution, idea, or
+                    innovation – expect surprises, demos, and energy.</p>
+                <div class="keynote-meta">
+                    <span class="keynote-speaker">
+                        <i class="fas fa-users"></i> Market Place Exhibitor Representatives
+                    </span>
+                    <span class="keynote-time">
+                        <i class="far fa-clock"></i> 11:15
+                    </span>
+                    <span class="keynote-room">
+                        <i class="fas fa-map-marker-alt"></i> Auditorium K
+                    </span>
+                </div>
+            </div>
+
+            <div class="keynote-card fade-in" data-href="bosch.html" style="cursor:pointer;">
+                <div class="keynote-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3><a href="minute.html" class="keynote-link">
+                        Opportunity Open Source: the importance of open source culture for Bosch</h3>
+                </a>
+                <p>Explore how Bosch is embedding open source principles into its core culture to enable scalable,
+                    collaborative, and future-ready technology development.</p>
+                <div class="keynote-meta">
+                    <span class="keynote-speaker">
+                        <i class="fas fa-user"></i> Dr. Matthias Klauda (XC/EE) | Bosch
+                    </span>
+                    <span class="keynote-time">
+                        <i class="far fa-clock"></i> 16:30
+                    </span>
+                    <span class="keynote-room">
+                        <i class="fas fa-map-marker-alt"></i> Auditorium K
+                    </span>
+                </div>
+            </div>
+            <div class="keynote-card fade-in" data-href="market.html" style="cursor:pointer;">
+                <div class="keynote-icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <h3><a href="market.html" class="keynote-link">
+                        Market Place</h3>
+                </a>
+                <p>Engage directly with cutting-edge tech demos and startups in the Market Place – an interactive space
+                    to network, experiment, and get hands-on with innovations.</p>
+                <div class="keynote-meta">
+                    <span class="keynote-speaker">
+                        <i class="fas fa-users"></i> Various Exhibitors
+                    </span>
+                    <span class="keynote-time">
+                        <i class="far fa-clock"></i> All Day
+                    </span>
+                    <span class="keynote-room">
+                        <i class="fas fa-map-marker-alt"></i> Exhibition Hall
+                    </span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="RustTechX-Summit2025-logo.png" alt="RustTechX Logo">
+                </div>
+                <p>Annual Rust Conference organized by Bosch Global Software Technologies, where Rust enthusiasts
+                    converge to explore innovative ideas.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="agenda.html">Agenda</a></li>
+                    <li><a href="keynotes.html">Keynotes</a></li>
+                    <li><a href="speakers.html">Speakers</a></li>
+                    <li><a href="venue.html">Venue</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Bosch Koramangala, Building 905, Room 230</p>
+                <p><i class="fas fa-envelope"></i> contact@rusttechx.com</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright &copy; 2025 Bosch Global Software Technologies Private Limited, all rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll Animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        function checkScroll() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Ensure page loads at top
+        window.addEventListener('load', function () {
+            window.scrollTo(0, 0);
+        });
+
+        // Make keynote-card clickable if data-href is present
+        document.querySelectorAll('.keynote-card[data-href]').forEach(card => {
+            card.addEventListener('click', function (e) {
+                // Prevent double navigation if clicking the <a>
+                if (e.target.closest('a')) return;
+                window.location.href = this.getAttribute('data-href');
+            });
+        });
+    </script>
+</body>
+
+</html>
